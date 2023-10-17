@@ -14,6 +14,10 @@ class Message(models.Model):
     message = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
+    def save(self, *args, **kwargs):
+        # Using Django's ORM for database operations
+        super(Message, self).save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.product_name}"
 

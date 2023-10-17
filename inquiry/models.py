@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MaxLengthValidator, MinLengthValidator, EmailValidator
+from django.core.validators import MaxLengthValidator, EmailValidator
 from datetime import datetime
 
 
@@ -16,6 +16,10 @@ class Inquiry(models.Model):
     email = models.EmailField(max_length=200, validators=[EmailValidator(), MaxLengthValidator(200)])
     phone = models.CharField(max_length=20, blank=True, validators=[MaxLengthValidator(20)])
     create_date = models.DateTimeField(default=datetime.now)
+
+    def save(self, *args, **kwargs):
+        # Using Django's ORM for database operations
+        super(Inquiry, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.email

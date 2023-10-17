@@ -3,7 +3,7 @@ from django.db import models
 from datetime import datetime
 from django.utils.text import slugify
 from multiselectfield import MultiSelectField
-from django.utils import timezone
+from django.core.validators import MinValueValidator, validate_image_file_extension
 
 
 # Create an Accessories model with a ForeignKey to Category
@@ -112,7 +112,8 @@ class Accessories(models.Model):
     type_slug = models.SlugField(choices=[(slugify(choice[0]), choice[1]) for choice in Type_slug], max_length=500)
     description = models.TextField(verbose_name='Description', blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Price')
-    accessory_photo = models.ImageField(upload_to='accessories/%Y/%m/%d/', verbose_name='Image', blank=True, null=True)
+    accessory_photo = models.ImageField(upload_to='accessories/%Y/%m/%d/', verbose_name='Image', blank=True, null=True,
+                                        validators=[validate_image_file_extension])
     features = MultiSelectField(choices=feature_choices, verbose_name='Features', blank=True, max_length=300)
     is_featured = models.BooleanField(default=False, verbose_name='Is Featured')
     created_date = models.DateTimeField(default=datetime.now, blank=True)
