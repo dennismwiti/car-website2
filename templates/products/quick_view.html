@@ -1,0 +1,201 @@
+<!-- Body -->
+<!-- header -->
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Car Accessories Shop</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img2/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/static/fonts2/fontawesome-webfont3e6e.woff2?v=4.7.0">
+    <link rel="stylesheet" type="text/css" href="/static/fonts2/fontawesome-webfont3e6e.woff?v=4.7.0">
+    <link rel="stylesheet" type="text/css" href="/static/fonts2/fontawesome-webfont3e6e.ttf?v=4.7.0">
+    <link rel="stylesheet" type="text/css" href="/static/fonts2/ionicons28b5.woff?v=2.0.0">
+    <link rel="stylesheet" type="text/css" href="/static/fonts2/ionicons28b5.ttf?v=2.0.0">
+
+     <!-- css2
+    ========================= -->
+     <!--bootstrap min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/bootstrap.min.css">
+    <!--owl carousel min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/owl.carousel.min.css">
+    <!--slick min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/slick.css">
+    <!--magnific popup min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/magnific-popup.css">
+    <!--font awesome css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/font.awesome.css">
+    <!--ionicons min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/ionicons.min.css">
+    <!--animate css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/animate.css">
+    <!--jquery ui min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/jquery-ui.min.css">
+    <!--slinky menu css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/slinky.menu.css">
+    <!-- Plugins css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/plugins.css">
+
+    <!-- Main Style css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/style.css">
+
+    <!--modernizr min js here-->
+    <script src="/static/js2/vendor/modernizr-3.7.1.min.js"></script>
+
+    <script>
+        .centered-nav {
+        text-align: center;
+        }
+
+        .centered-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .centered-nav ul li {
+            display: inline-block;
+            margin-right: 20px; /* Adjust as needed to control spacing between menu items */
+        }
+
+        .centered-nav ul li:last-child {
+            margin-right: 0; /* Remove margin from the last item to prevent extra spacing */
+        }
+    </script>
+</head>
+
+<body>
+
+{% load humanize %}
+
+<!-- modal area start-->
+    <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal_body">
+                    <div class="container">
+                        <div class="row">
+                            {% for accessory in quickview_details %}
+                                <div class="col-lg-5 col-md-5 col-sm-12">
+                                    <div class="modal_tab">
+                                        <div class="tab-content product-details-large">
+                                            <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                                                <div class="modal_tab_img">
+                                                    {% if single_accessory.photo_url %}
+                                                        <a href="#"><img src="{{ single_accessory.photo_url }}" alt=""></a>
+                                                    {% else %}
+                                                        <p>No Image Available</p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-12">
+                                    <div class="modal_right">
+                                        <div class="modal_title mb-10">
+                                            <h2>{{single_accessory.name}}</h2>
+                                        </div>
+                                        <div class="modal_price mb-10">
+                                            <span class="new_price">KSH {{single_accessory.price | intcomma}}</span>
+                                            <span class="old_price" >$78.99</span>
+                                        </div>
+                                        <div class="modal_description mb-15">
+                                            {% if single_accessory %}
+                                                <p>
+                                                    {{single_accessory.description | safe }}
+                                                </p>
+                                            {% else %}
+                                                <p>
+                                                    No Descriptions available
+                                                </p>
+                                            {% endif %}                                    </div>
+                                        <div class="variants_selects">
+                                            <div class="variants_size">
+                                                <h2>size</h2>
+                                                <select class="select_option">
+                                                    <option selected value="1">s</option>
+                                                    <option value="1">m</option>
+                                                    <option value="1">l</option>
+                                                    <option value="1">xl</option>
+                                                    <option value="1">xxl</option>
+                                                </select>
+                                            </div>
+                                            <div class="variants_color">
+                                                <h2>color</h2>
+                                                <select class="select_option">
+                                                    <option selected value="1">purple</option>
+                                                    <option value="1">violet</option>
+                                                    <option value="1">black</option>
+                                                    <option value="1">pink</option>
+                                                    <option value="1">orange</option>
+                                                </select>
+                                            </div>
+                                            <div class="modal_add_to_cart">
+                                                <form action="#">
+                                                    <input min="1" max="100" step="2" value="1" type="number">
+                                                    <button type="submit">add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="modal_social">
+                                            <h2>Share this product</h2>
+                                            <ul>
+                                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal area end-->
+
+<!-- JS
+    ============================================ -->
+    <!--jquery min js-->
+    <script src="/static/js2/vendor/jquery-3.4.1.min.js"></script>
+    <!--popper min js-->
+    <script src="/static/js2/popper.js"></script>
+    <!--bootstrap min js-->
+    <script src="/static/js2/bootstrap.min.js"></script>
+    <!--owl carousel min js-->
+    <script src="/static/js2/owl.carousel.min.js"></script>
+    <!--slick min js-->
+    <script src="/static/js2/slick.min.js"></script>
+    <!--magnific popup min js-->
+    <script src="/static/js2/jquery.magnific-popup.min.js"></script>
+    <!--jquery countdown min js-->
+    <script src="/static/js2/jquery.countdown.js"></script>
+    <!--jquery ui min js-->
+    <script src="/static/js2/jquery.ui.js"></script>
+    <!--jquery elevatezoom min js-->
+    <script src="/static/js2/jquery.elevatezoom.js"></script>
+    <!--isotope packaged min js-->
+    <script src="/static/js2/isotope.pkgd.min.js"></script>
+    <!--slinky menu js-->
+    <script src="/static/js2/slinky.menu.js"></script>
+    <!-- Plugins JS -->
+    <script src="/static/js2/plugins.js"></script>
+
+    <!-- Main JS -->
+    <script src="/static/js2/main.js"></script>
+
+</body>
+
+</html>

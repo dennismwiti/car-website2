@@ -1,0 +1,478 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>product details</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img2/favicon.ico">
+
+     <!-- CSS
+    ========================= -->
+     <!--bootstrap min css-->
+    <link rel="stylesheet" href="/static/css2/bootstrap.min.css">
+    <!--owl carousel min css-->
+    <link rel="stylesheet" href="/static/css2/owl.carousel.min.css">
+    <!--slick min css-->
+    <link rel="stylesheet" href="/static/css2/slick.css">
+    <!--magnific popup min css-->
+    <link rel="stylesheet" href="/static/css2/magnific-popup.css">
+    <!--font awesome css-->
+    <link rel="stylesheet" href="/static/css2/font.awesome.css">
+    <!--ionicons min css-->
+    <link rel="stylesheet" href="/static/css2/ionicons.min.css">
+    <!--animate css-->
+    <link rel="stylesheet" href="/static/css2/animate.css">
+    <!--jquery ui min css-->
+    <link rel="stylesheet" href="/static/css2/jquery-ui.min.css">
+    <!--slinky menu css-->
+    <link rel="stylesheet" href="/static/css2/slinky.menu.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/static/css2/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/static/css2/style.css">
+
+    <!--modernizr min js here-->
+    <script src="/static/js2/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+    /* Additional styles specific to the modal */
+    body {
+      padding-top: 20px;
+    }
+
+    .modal-header {
+      background-color: #f8f9fa;
+    }
+
+    .modal-content {
+      border: none;
+    }
+
+    .modal-body {
+      padding: 1rem;
+    }
+
+    #inquiryModal {
+      background-color: rgba(0, 0, 0, 0.8); /* Adjust the last value (0.7) for modal opacity */
+    }
+
+    /* Custom CSS for fade.show effect */
+    .fade.show {
+      opacity: 1;
+      transition: opacity 0.3s ease; /* Adjust the duration and timing function as needed */
+    }
+
+    /* Custom CSS for spacing in form-group */
+    .form-group {
+      margin-bottom: 15px; /* Adjust the value as needed for your desired spacing */
+    }
+
+
+    .form-control {
+    color: #495057 !important;
+    padding-left: 15px;
+    }
+
+    .form-control:disabled,
+    .form-control[readonly] {
+      background-color:#ffeced;
+      opacity: 1;
+  </style>
+
+</head>
+
+<body>
+{% load humanize %}
+
+
+    <header class="header_area header_padding">
+        <!--header top start-->
+        <div class="header_middle">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="header_bottom_container">
+                            <div class="main_menu">
+                                <nav class="centered-nav align-items-center text-center">
+                                    <ul>
+                                        <li><a href="{% url 'our_products' %}">home</a></li>
+                                        <li><a href="{% url 'cars' %}">cars</a></li>
+                                        <li><a href="{% url 'about' %}">about Us</a></li>
+                                        <li><a href="{% url 'contact' %}"> Contact Us</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header bottom end-->
+    </header>
+
+
+		<!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content text-center">
+                        <ul>
+                            <li><a href="{% url 'our_products' %}">home</a></li>
+                            <li><a href="{% url 'accessories' %}">shop</a></li>
+                            <li>product details</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+		<!--product details start-->
+    <div class="product_details mt-20 pt-20">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product-details-tab">
+                        <div id="img-1" class="zoomWrapper single-zoom">
+                            <a href="#">
+                                <img id="zoom1" src="{{single_accessory.accessory_photo.url}}"
+                                     data-zoom-image="{{single_accessory.accessory_photo.url}}" alt="big-1">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product_d_right">
+                        <form action="#">
+
+                            <h1>{{single_accessory.name}}</h1>
+<!--                            <div class="product_nav">-->
+<!--                                <ul>-->
+<!--                                    <li class="prev"><a href="product-details.html"><i class="fa fa-angle-left"></i></a></li>-->
+<!--                                    <li class="next"><a href="variable-product.html"><i class="fa fa-angle-right"></i></a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+                            <div class=" product_ratting">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li class="review"><a href="#"> (customer review ) </a></li>
+                                </ul>
+                            </div>
+                            <div class="price_box">
+                                <span class="current_price">KSH {{single_accessory.price | intcomma}}</span>
+                                <span class="old_price">$80.00</span>
+
+                            </div>
+                            <div class="product_desc">
+                                <p style="font-weight: bold; color: green;">
+                                    CATEGORY: {{single_accessory.category}}
+                                </p>
+                                <p style="font-weight: bold; color: green;">
+                                    TYPE: {{single_accessory.type_slug}}
+                                </p>
+                            </div>
+<!--                            <div class="product_variant color">-->
+<!--                                <h3>Available Options</h3>-->
+<!--                                <label>color</label>-->
+<!--                                <ul>-->
+<!--                                    <li class="color1"><a href="#"></a></li>-->
+<!--                                    <li class="color2"><a href="#"></a></li>-->
+<!--                                    <li class="color3"><a href="#"></a></li>-->
+<!--                                    <li class="color4"><a href="#"></a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+                            <div class="product_variant quantity mt-3 pt-3">
+                                <button class="button btn-lg" type="button" style="background-color: turquoise;" data-toggle="modal"
+                                        data-target="#inquiryModal">SEND A MESSAGE</button>
+                            </div>
+                        </form>
+                        <div class="priduct_social mt-3 pt-3">
+                            <ul>
+                                <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Like</a></li>
+                                <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i> tweet</a></li>
+                                <li><a class="pinterest" href="#" title="pinterest"><i class="fa fa-pinterest"></i> save</a></li>
+                                <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i> share</a></li>
+                                <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i> linked</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--product details end-->
+
+
+		<!--product info start-->
+    <div class="product_d_info">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product_d_inner">
+                        <div class="product_info_button">
+                            <ul class="nav" role="tablist" id="nav-tab">
+                                <li>
+                                    <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Description</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Features</a>
+                                </li>
+<!--                                <li>-->
+<!--                                    <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews (1)</a>-->
+<!--                                </li>-->
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="info" role="tabpanel">
+                                <div class="product_info_content"  style="font-weight: bold;">
+                                    {% if single_accessory %}
+                                        <p>
+                                            {{single_accessory.description | safe }}
+                                        </p>
+                                    {% else %}
+                                        <p>
+                                            No Descriptions available
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="sheet" role="tabpanel">
+                                <div class="product_d_table">
+                                </div>
+                                <div class="product_info_content"  style="font-weight: bold;">
+                                    {% if single_accessory %}
+                                        <p>
+                                            {{single_accessory.features}}
+                                        </p>
+                                    {% else %}
+                                        <p>
+                                            NO FEATURES AVAILABLE.
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--product info end-->
+
+    <!-- Inquiry Modal -->
+
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <div class="modal fade" id="inquiryModal" role="dialog" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="contact-dealer modal-header">
+              <center>
+                <img src="/static/img2/logo/logo.jpg" style="width: 120px; height: 100px;">
+              </center>
+              <button type="button" class="close" data-dismiss="modal">
+                <span>&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'send_message' %}" method="POST">
+                    {% csrf_token %}
+
+                    {% if user.is_authenticated %}
+                        <input type="hidden" name="user_id" value="{{ user.id }}">
+                    {% else %}
+                        <input type="hidden" name="user_id" value="0">
+                    {% endif %}
+
+                    <input type="hidden" name="accessory_id" value="{{ single_accessory.id }}">
+                    <div class="form-group">
+                        <label for="Name" class="col-form-label">Hello, My Name is</label>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="first_name" class="form-control" placeholder="First Name"
+                                    {% if user.is_authenticated %} value="{{ user.first_name }}" {% endif %} required>
+                            </div>
+                            <div class="col">
+                                <input type="text" name="last_name" class="form-control" placeholder="Last Name"
+                                    {% if user.is_authenticated %} value="{{ user.last_name }}" {% endif %} required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="sel1" name="customer_need">
+                            <option value="I'm interested in this">I'm interested in this</option>
+                            <option value="I'd like to know your best price for this">I'd like to know your best price for this
+                            </option>
+                            <option value="Check home delivery options">Check home delivery options</option>
+                            <option value="I'd like a history report for this">I'd like a history report for this</option>
+                            <option value="Discuss Financing">Discuss Financing</option>
+                            <option value="Others [Mention Below]">Others [Mention Below]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="product_name" class="form-control" value="{{ single_accessory.name }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">I live in</label>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="city" class="form-control" placeholder="City" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" name="state" class="form-control" placeholder="State" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <label for="name" class="col-form-label">You can reach me by email at</label>
+                                <input type="email" name="email" class="form-control" placeholder="Email Address"
+                                    {% if user.is_authenticated %} value="{{ user.email }}" {% endif %} required>
+                            </div>
+                            <div class="col">
+                                <label for="phone" class="col-form-label">or by cell at</label>
+                                <input type="text" name="phone" placeholder="Phone Number (optional)" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="col-form-label">Additional Messages</label>
+                        <textarea name="message" class="form-control" placeholder="Enter your message here (optional)"></textarea>
+                    </div>
+                    <hr>
+                    <input type="submit" value="Submit" class="btn btn-block btn-dark">
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Inquiry Modal ends -->
+
+
+		<!--footer area start-->
+    <footer class="footer_widgets">
+        <div class="container">
+            <div class="footer_top">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="widgets_container contact_us">
+                            <div class="footer_contact">
+                                <p>We are a team of designers and developers that
+                                    create high quality Magento, Prestashop, Opencart...</p>
+                                <p><span>Address</span> 4710-4890 Breckinridge St, UK Burlington, VT 05401</p>
+                                <p><span>Need Help?</span>Call: <a href="tel:1-800-345-6789">1-800-345-6789</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>Information</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="privacy-policy.html">privacy policy</a></li>
+                                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Gift Certificates</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>Extras</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="#">Newsletter</a></li>
+                                    <li><a href="#">Affiliate</a></li>
+                                    <li><a href="#">Specials</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="widgets_container">
+                            <h3>Newsletter Subscribe</h3>
+                            <p>We’ll never share your email address with a third-party.</p>
+                            <div class="subscribe_form">
+                                <form id="mc-form" class="mc-form footer-newsletter">
+                                    <input id="mc-email" type="email" autocomplete="off" placeholder="Enter you email address here..." />
+                                    <button id="mc-submit">Subscribe</button>
+                                </form>
+                                <!-- mailchimp-alerts Start -->
+                                <div class="mailchimp-alerts text-centre">
+                                    <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                                    <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                                    <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                                </div><!-- mailchimp-alerts end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--footer area end-->
+
+
+<!-- JS
+============================================ -->
+<!--jquery min js-->
+<script src="/static/js2/vendor/jquery-3.4.1.min.js"></script>
+<!--popper min js-->
+<script src="/static/js2/popper.js"></script>
+<!--bootstrap min js-->
+<script src="/static/js2/bootstrap.min.js"></script>
+<!--owl carousel min js-->
+<script src="/static/js2/owl.carousel.min.js"></script>
+<!--slick min js-->
+<script src="/static/js2/slick.min.js"></script>
+<!--magnific popup min js-->
+<script src="/static/js2/jquery.magnific-popup.min.js"></script>
+<!--jquery countdown min js-->
+<script src="/static/js2/jquery.countdown.js"></script>
+<!--jquery ui min js-->
+<script src="/static/js2/jquery.ui.js"></script>
+<!--jquery elevatezoom min js-->
+<script src="/static/js2/jquery.elevatezoom.js"></script>
+<!--isotope packaged min js-->
+<script src="/static/js2/isotope.pkgd.min.js"></script>
+<!--slinky menu js-->
+<script src="/static/js2/slinky.menu.js"></script>
+<!-- Plugins JS -->
+<script src="/static/js2/plugins.js"></script>
+
+<!-- Main JS -->
+<script src="/static/js2/main.js"></script>
+
+</body>
+
+</html>

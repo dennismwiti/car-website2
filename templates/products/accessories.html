@@ -1,0 +1,801 @@
+{% csrf_token %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Car Accessories Shop</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img2/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/static/fonts2/fontawesome-webfont3e6e.woff2?v=4.7.0">
+    <link rel="stylesheet" type="text/css" href="/static/fonts2/fontawesome-webfont3e6e.woff?v=4.7.0">
+    <link rel="stylesheet" type="text/css" href="/static/fonts2/fontawesome-webfont3e6e.ttf?v=4.7.0">
+    <link rel="stylesheet" type="text/css" href="/static/fonts2/ionicons28b5.woff?v=2.0.0">
+    <link rel="stylesheet" type="text/css" href="/static/fonts2/ionicons28b5.ttf?v=2.0.0">
+
+     <!-- css2
+    ========================= -->
+     <!--bootstrap min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/bootstrap.min.css">
+    <!--owl carousel min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/owl.carousel.min.css">
+    <!--slick min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/slick.css">
+    <!--magnific popup min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/magnific-popup.css">
+    <!--font awesome css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/font.awesome.css">
+    <!--ionicons min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/ionicons.min.css">
+    <!--animate css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/animate.css">
+    <!--jquery ui min css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/jquery-ui.min.css">
+    <!--slinky menu css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/slinky.menu.css">
+    <!-- Plugins css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/plugins.css">
+
+    <!-- Main Style css2-->
+    <link rel="stylesheet" type="text/css" href="/static/css2/style.css">
+
+    <!--modernizr min js here-->
+    <script src="/static/js2/vendor/modernizr-3.7.1.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+    <!-- Live search Javascript -->
+    <script src="/static/js2/live-search.js"></script>
+
+    <script>
+        .centered-nav {
+        text-align: center;
+        }
+
+        .centered-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .centered-nav ul li {
+            display: inline-block;
+            margin-right: 20px; /* Adjust as needed to control spacing between menu items */
+        }
+
+        .centered-nav ul li:last-child {
+            margin-right: 0; /* Remove margin from the last item to prevent extra spacing */
+        }
+    </script>
+</head>
+
+<body>
+{% load humanize %}
+
+    <!-- Main Wrapper Start -->
+    <!--header area start-->
+    <header class="header_area">
+        <!--header middel start-->
+        <div class="header_middle">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="logo ml-0 pl-0">
+                            <a class ="d-flex" href="{% url 'our_products' %}" style="width: 100px; height: 100px;">
+                                <img src="/static/img2/logo/logo.jpg" alt=""></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9 col-md-6">
+                        <div class="middel_center">
+                            <div class="search-container">
+                                <!-- Update the form action to use the 'search_accessory' URL -->
+                                <form action="{% url 'search_accessory' %}" method="get">
+                                    <div class="search_box">
+                                        <!-- Update the input field name to 'query' -->
+                                        <input name="query" placeholder="Search entire store here ..." type="text"
+                                            value="{{ query }}">
+                                        <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if query %}
+                        {# Display search results here #}
+                        <div class="search-results">
+                            <!-- Display your search results using 'results' variable -->
+                            {% for result in results %}
+                                <!-- Display individual search result -->
+                            {% endfor %}
+                        </div>
+                        {# Clear the search query after displaying results #}
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                document.querySelector('input[name="query"]').value = '';
+                            });
+                        </script>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!--header middel end-->
+
+
+         <!--header area start-->
+        <header class="header_area header_padding">
+        <!--header top start-->
+            <div class="header_bottom bottom_two sticky-header">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <div class="header_bottom_container">
+                                <div class="categories_menu">
+                                    <div class="categories_title" style="background-color: rgb(64, 224, 208)">
+                                        <h2 class="categori_toggle">Browse categories</h2>
+                                    </div>
+                                    <div class="categories_menu_toggle">
+                                        <ul>
+                                            <li class="menu_item_children categorie_list"><a href="#">Accessories <i class="fa fa-angle-right"></i></a>
+                                                <ul class="categories_mega_menu">
+                                                    <li class="menu_item_children"><a href="{% url 'filter_accessories' %}?category=Interior%20Accessories">Interior Accessories</a>
+                                                        <ul class="categorie_sub_menu">
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=floor-mats">Floor Mats</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=seat-covers">Seat Covers</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=steering-wheel-covers">Steering Wheel Covers</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=sun-shades">Sun Shades</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=dash-covers">Dash Covers</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="menu_item_children"><a href="{% url 'filter_accessories' %}?category=Exterior%20Accessories">Exterior Accessories</a>
+                                                        <ul class="categorie_sub_menu">
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=car-covers">Car Covers</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=roof-racks">Roof Racks</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=bike-racks">Bike Racks</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=running-boards">Running Boards</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=fender-flares">Fender Flares</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="menu_item_children last_child"><a href="{% url 'filter_accessories' %}?category=Perfomance%20Accessories">Performance Accessories</a>
+                                                        <ul class="categorie_sub_menu">
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=air-filters">Air Filters</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=exhaust-systems">Exhaust Systems</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=tuning-chips">Tuning Chips</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=suspension-upgrades">Suspension Upgrades</a></li>
+                                                            <li><a href="{% url 'filter_accessories' %}?type_slug=perfomance-brakes">Perfomance Brakes</a></li>
+                                                        </ul>
+                                                        <div class="categorie_banner">
+                                                            <a href="#"><img src="/static/img2/bg/banner2.jpg" alt=""></a>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_children"><a href="{% url 'filter_accessories' %}?category=Electronics%20and%20Entertainment"> Electronics and Entertainment <i class="fa fa-angle-right"></i></a>
+                                                <ul class="categories_mega_menu">
+                                                    <li class="menu_item_children"><h4 style="font-weight: bold;">Electronics</h4>
+                                                        <div class="categorie_sub_menu">
+                                                            <ul>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=backup-cameras">Backup Cameras</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=gps-navigation">GPS Navigation</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=dash-cams">Dash Cams</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li class="menu_item_children"><h4 style="font-weight: bold;">Entertainment</h4>
+                                                        <div class="categorie_sub_menu">
+                                                            <ul>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=car-stereos">Car Stereos</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=bluetooth-kits">Bluetooth Kits</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_children"><a href="{% url 'filter_accessories' %}?category=Safety%20and%20Security%20Accessories"> Safety and Security Accessories <i class="fa fa-angle-right"></i></a>
+                                                <ul class="categories_mega_menu column_2">
+                                                    <li class="menu_item_children"><h4 style="font-weight: bold;">Safety</h4>
+                                                        <div class="categorie_sub_menu">
+                                                            <ul>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=car-safety-kits"> Car Safety Kits</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=parking-sensors"> Parking Sensors</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=blind-spot-mirrors"> Blind Spot Mirrors</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li class="menu_item_children"><h4 style="font-weight: bold;">Security</h4>
+                                                        <div class="categorie_sub_menu">
+                                                            <ul>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=alarm-systems">Alarm Systems</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=locking-wheel-nuts">Locking Wheel Nuts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_children"><a href="{% url 'filter_accessories' %}?category=Lighting%20Accessories"> Lighting Accessories<i class="fa fa-angle-right"></i></a>
+                                                <ul class="categories_mega_menu column_2">
+                                                    <li class="menu_item_children"><h4 style="font-weight: bold;">Lighting</h4>
+                                                        <div class="categorie_sub_menu">
+                                                            <ul>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=led-headlights">LED Headlights</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=fog-lights">Fog Lights</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=interior-led-lights">Interior LED lights </a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=underglow-lights">Underglow Lights</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=light-bars">Light Bars</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_children"><a href="{% url 'filter_accessories' %}?category=Utility%20Accessories"> Utility Accessories<i class="fa fa-angle-right"></i></a>
+                                                <ul class="categories_mega_menu column_2">
+                                                    <li class="menu_item_children"><h4 style="font-weight: bold;">Utilities</h4>
+                                                        <div class="categorie_sub_menu">
+                                                            <ul>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=cargo-organizers">Cargo Organizers</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=car-hitches">Car Hitches</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=tire-inflators">Tire Inflators </a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=car-tents">Car Tents</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=tool-kits">Tool Kits</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_children"><a href="{% url 'filter_accessories' %}?category=Appearance%20Accessories"> Appearance Accessories:<i class="fa fa-angle-right"></i></a>
+                                                <ul class="categories_mega_menu column_2">
+                                                    <li class="menu_item_children"><h4 style="font-weight: bold;">Appearances</h4>
+                                                        <div class="categorie_sub_menu">
+                                                            <ul>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=chrome-trim">Chrome Trim</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=window-tinting">Window Tinting</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=body-kits">Body Kits </a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=grille-guards">Grille Guards</a></li>
+                                                                <li><a href="{% url 'filter_accessories' %}?type_slug=vinyl-decals">Vinyl Decals</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="main_menu">
+                                    <nav class="centered-nav">
+                                        <ul>
+                                            <li><a href="{% url 'our_products' %}">home</a></li>
+                                            <li><a href="{% url 'cars' %}">cars</a></li>
+                                            <li><a href="{% url 'about' %}">about Us</a></li>
+                                            <li><a href="{% url 'contact' %}"> Contact Us</a></li>
+                                            <li><a href="{% url 'accessories' %}"> Accessories</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--header bottom end-->
+        </header>
+    </header>
+    <!--header area end-->
+
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content text-center">
+                        <ul>
+                            <li><a href="{%  url 'our_products' %}">home</a></li>
+                            <li>shop</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!--shop  area start-->
+    <div class="shop_area shop_reverse">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12">
+                    <!--sidebar widget start-->
+                    <aside class="sidebar_widget">
+                        <div class="widget_inner">
+                            <div class="widget_list widget_filter">
+                                <h2>Filter by price</h2>
+                                <form method="GET" action="{% url 'filter_accessories' %}">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <select class="form-control" name="min_price">
+                                                <option value=""> ....</option>
+                                                <option value="0">Any</option>
+                                                <option value="50">50 Ksh</option>
+                                                <option value="100">100 Ksh</option>
+                                                <option value="500">500 Ksh</option>
+                                                <option value="1000">1,000 Ksh</option>
+                                                <option value="5000">5,000 Ksh</option>
+                                                <option value="10000">10,000 Ksh</option>
+                                                <option value="15000">15,000 Ksh</option>
+                                                <option value="20000">20,000 Ksh</option>
+                                                <option value="30000">30,000 Ksh</option>
+                                                <option value="40000">40,000 Ksh</option>
+                                                <option value="50000">50,000 Ksh</option>
+                                                <option value="60000">60,000 Ksh</option>
+                                                <option value="70000">70,000 Ksh</option>
+                                                <option value="80000">80,000 Ksh</option>
+                                                <option value="90000">90,000 Ksh</option>
+                                                <option value="100000">100,000 Ksh</option>
+                                                <!-- Add more predefined values as needed -->
+                                            </select>
+                                        </div>
+                                        <div class="col-6">
+                                            <select class="form-control" name="max_price">
+                                                <option value=""> ....</option>
+                                                <option value="50">50 Ksh</option>
+                                                <option value="100">100 Ksh</option>
+                                                <option value="500">500 Ksh</option>
+                                                <option value="1000">1,000 Ksh</option>
+                                                <option value="5000">5,000 Ksh</option>
+                                                <option value="10000">10,000 Ksh</option>
+                                                <option value="15000">15,000 Ksh</option>
+                                                <option value="20000">20,000 Ksh</option>
+                                                <option value="30000">30,000 Ksh</option>
+                                                <option value="40000">40,000 Ksh</option>
+                                                <option value="50000">50,000 Ksh</option>
+                                                <option value="60000">60,000 Ksh</option>
+                                                <option value="70000">70,000 Ksh</option>
+                                                <option value="80000">80,000 Ksh</option>
+                                                <option value="90000">90,000 Ksh</option>
+                                                <option value="100000">100,000 Ksh</option>
+                                                <!-- Add more predefined values as needed -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-center mb-4 pt-4">
+                                        <button type="submit" class="btn btn-block button-theme btn-md" style="background-color: rgb(64, 224, 208);">
+                                            <i class="fa fa-search"></i>Filter Accessories
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="widget_list widget_categories">
+                                <h2>Categories</h2>
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'filter_accessories' %}?category=Interior%20Accessories">Interior Accessories</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'filter_accessories' %}?category=Exterior%20Accessories">Exterior Accessories</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'filter_accessories' %}?category=Perfomance%20Accessories">Perfomance Accessories</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'filter_accessories' %}?category=Safety%20and%20Security%20Accessories">Safety and Security Accessories</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'filter_accessories' %}?category=Electronics%20and%20Entertainment">Electronics and Entertainment</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'filter_accessories' %}?category=Lighting%20Accessories">Lighting Accessories</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'filter_accessories' %}?category=Utility%20Accessories">Utility Accessories</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'filter_accessories' %}?category=Appearance%20Accessories">Appearance Accessories</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="shop_sidebar_banner">
+                            <a href="#"><img src="/static/img2/bg/banner9.jpg" alt=""></a>
+                        </div>
+                    </aside>
+                    <!--sidebar widget end-->
+                </div>
+
+                <div class="col-lg-9 col-md-12">
+                    <!--shop wrapper start-->
+                    <!--shop toolbar start-->
+                    <div class="shop_banner">
+                        <img src="/static/img2/bg/banner8.jpg" alt="">
+                    </div>
+                    <div class="shop_title text-center">
+                        <h3>Accessories</h3>
+                    </div>
+                    <div class="shop_toolbar_wrapper mt-3 pt-3">
+                        <div class="shop_toolbar_btn text-center">
+
+                            <button data-role="grid_4" type="button" class="active btn-grid-3" data-toggle="tooltip" title="3"></button>
+
+                            <button data-role="grid_3" type="button" class=" btn-grid-4" data-toggle="tooltip" title="4"></button>
+
+                            <button data-role="grid_list" type="button" class="btn-list" data-toggle="tooltip" title="List"></button>
+                        </div>
+
+                        <div class="page_amount">
+                            <p>Showing {{ paged_accessory.number }}–{{ paged_accessory.number|add:paged_accessory.paginator.per_page|add:"-1" }} of {{ paged_accessory.paginator.count }} results</p>
+                        </div>
+                    </div>
+
+                    <!--shop toolbar end-->
+
+                    <div class="row shop_wrapper">
+                        {% for accessory in paged_accessory %}
+                            <div class="col-lg-4 col-md-4 col-12 ">
+                                <div class="single_product">
+                                    <div class="product_name grid_name">
+                                        <h3><a href="{% url 'accessory_details' accessory.id %}">{{ accessory.name }}</a></h3>
+                                        <p class="manufacture_product"><a href="#"> {{accessory.category }}</a></p>
+                                    </div>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="{% url 'accessory_details' accessory.id %}">
+                                            <img src="{{ accessory.accessory_photo.url }}" alt=""></a>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
+                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                                <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content">
+                                        <div class="content_inner">
+                                            <div class="product_ratings">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="product_footer d-flex align-items-center">
+                                                <div class="price_box">
+                                                    <span class="current_price">{{accessory.price | intcomma}}</span>
+                                                    <span class="old_price">$3200.00</span>
+                                                </div>
+                                                <div class="add_to_cart">
+                                                    <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="product_content list_content">
+                                        <div class="left_caption">
+                                            <div class="product_name">
+                                                <h3><a href="{% url 'accessory_details' accessory.id %}">{{ accessory.name }}</a></h3>
+                                            </div>
+                                            <div class="product_ratings">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="product_desc">
+                                                <p>{{ accessory.description }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="right_caption">
+                                            <div class="price_box">
+                                                <span class="current_price">Type Slug: {{ accessory.type_slug }}</span>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="current_price">Category: {{ accessory.category }}</span>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="current_price">{{ accessory.price }}</span>
+                                                <span class="old_price">$420.00</span>
+                                            </div>
+                                            <div class="action_links_btn">
+                                                <ul>
+                                                    <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
+<!--                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>-->
+<!--                                                    <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>-->
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="shop_toolbar t_bottom">
+                        <div class="pagination">
+                            <ul>
+                                {% if paged_accessory.has_previous %}
+                                    <li><a href="?page={{ paged_accessory.previous_page_number }}">prev</a></li>
+                                {% endif %}
+
+                                {% for num in paged_accessory.paginator.page_range %}
+                                    <li {% if paged_accessory.number == num %} class="current" {% endif %}><a href="?page={{ num }}">{{ num }}</a></li>
+                                {% endfor %}
+
+                                {% if paged_accessory.has_next %}
+                                    <li><a href="?page={{ paged_accessory.next_page_number }}">next</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--shop wrapper end-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--shop  area end-->
+
+    <!--call to action start-->
+    <section class="call_to_action">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="call_action_inner">
+                        <div class="call_text">
+                            <h3>We Have <span>Recommendations</span> for You</h3>
+                            <p>Take 30% off when you spend $150 or more with code Autima11</p>
+                        </div>
+                        <div class="discover_now">
+                            <a href="#">discover now</a>
+                        </div>
+                        <div class="link_follow">
+                            <ul>
+                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                                <li><a href="#"><i class="ion-social-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--call to action end-->
+
+    <!--footer area start-->
+    <footer class="footer_widgets">
+        <div class="container">
+            <div class="footer_top">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="widgets_container contact_us">
+                            <div class="footer_contact">
+                                <p>We are a team of designers and developers that
+                                    create high quality Magento, Prestashop, Opencart...</p>
+                                <p><span>Address</span> 4710-4890 Breckinridge St, UK Burlington, VT 05401</p>
+                                <p><span>Need Help?</span>Call: <a href="tel:1-800-345-6789">1-800-345-6789</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>Information</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="privacy-policy.html">privacy policy</a></li>
+                                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Gift Certificates</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>Extras</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="#">Newsletter</a></li>
+                                    <li><a href="#">Affiliate</a></li>
+                                    <li><a href="#">Specials</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="widgets_container">
+                            <h3>Newsletter Subscribe</h3>
+                            <p>We’ll never share your email address with a third-party.</p>
+                            <div class="subscribe_form">
+                                <form id="mc-form" class="mc-form footer-newsletter">
+                                    <input id="mc-email" type="email" autocomplete="off" placeholder="Enter you email address here..." />
+                                    <button id="mc-submit">Subscribe</button>
+                                </form>
+                                <!-- mailchimp-alerts Start -->
+                                <div class="mailchimp-alerts text-centre">
+                                    <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                                    <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                                    <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                                </div><!-- mailchimp-alerts end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--footer area end-->
+
+
+    <!-- modal area start-->
+    <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal_body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-12">
+                                <div class="modal_tab">
+                                    <div class="tab-content product-details-large">
+                                        <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                                            <div class="modal_tab_img">
+                                                <a href="#"><img src="{{ single_accessory.accessory_photo.url }}" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-12">
+                                <div class="modal_right">
+                                    <div class="modal_title mb-10">
+                                        <h2>{{single_accessory.name}}</h2>
+                                    </div>
+                                    <div class="modal_price mb-10">
+                                        <span class="new_price">KSH {{single_accessory.price | intcomma}}</span>
+                                        <span class="old_price" >$78.99</span>
+                                    </div>
+                                    <div class="modal_description mb-15">
+                                        {% if single_accessory %}
+                                            <p>
+                                                {{single_accessory.description | safe }}
+                                            </p>
+                                        {% else %}
+                                            <p>
+                                                No Descriptions available
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="variants_selects">
+                                        <div class="variants_size">
+                                            <h2>size</h2>
+                                            <select class="select_option">
+                                                <option selected value="1">s</option>
+                                                <option value="1">m</option>
+                                                <option value="1">l</option>
+                                                <option value="1">xl</option>
+                                                <option value="1">xxl</option>
+                                            </select>
+                                        </div>
+                                        <div class="variants_color">
+                                            <h2>color</h2>
+                                            <select class="select_option">
+                                                <option selected value="1">purple</option>
+                                                <option value="1">violet</option>
+                                                <option value="1">black</option>
+                                                <option value="1">pink</option>
+                                                <option value="1">orange</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal_add_to_cart">
+                                            <form action="#">
+                                                <input min="1" max="100" step="2" value="1" type="number">
+                                                <button type="submit">add to cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal_social">
+                                        <h2>Share this product</h2>
+                                        <ul>
+                                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal area end-->
+
+
+<!--    &lt;!&ndash; Display the search results &ndash;&gt;-->
+<!--    {% block content %}-->
+<!--    &lt;!&ndash; Your existing content for accessories &ndash;&gt;-->
+
+<!--    <h2>Search Results for "{{ query }}"</h2>-->
+
+<!--    {% if results %}-->
+<!--    <ul>-->
+<!--        {% for accessory in results %}-->
+<!--        <li>-->
+<!--            <strong>Name:</strong> {{ accessory.name }}<br>-->
+<!--            <strong>Type Slug:</strong> {{ accessory.type_slug }}<br>-->
+<!--            <strong>Category:</strong> {{ accessory.category }}<br>-->
+<!--            <hr>-->
+<!--        </li>-->
+<!--        {% endfor %}-->
+<!--    </ul>-->
+<!--    {% else %}-->
+<!--    <p>No results found.</p>-->
+<!--    {% endif %}-->
+<!--    {% endblock %}-->
+
+    <!-- JS
+    ============================================ -->
+    <!--jquery min js-->
+    <script src="/static/js2/vendor/jquery-3.4.1.min.js"></script>
+    <!--popper min js-->
+    <script src="/static/js2/popper.js"></script>
+    <!--bootstrap min js-->
+    <script src="/static/js2/bootstrap.min.js"></script>
+    <!--owl carousel min js-->
+    <script src="/static/js2/owl.carousel.min.js"></script>
+    <!--slick min js-->
+    <script src="/static/js2/slick.min.js"></script>
+    <!--magnific popup min js-->
+    <script src="/static/js2/jquery.magnific-popup.min.js"></script>
+    <!--jquery countdown min js-->
+    <script src="/static/js2/jquery.countdown.js"></script>
+    <!--jquery ui min js-->
+    <script src="/static/js2/jquery.ui.js"></script>
+    <!--jquery elevatezoom min js-->
+    <script src="/static/js2/jquery.elevatezoom.js"></script>
+    <!--isotope packaged min js-->
+    <script src="/static/js2/isotope.pkgd.min.js"></script>
+    <!--slinky menu js-->
+    <script src="/static/js2/slinky.menu.js"></script>
+    <!-- Plugins JS -->
+    <script src="/static/js2/plugins.js"></script>
+
+    <!-- Main JS -->
+    <script src="/static/js2/main.js"></script>
+
+</body>
+
+</html>

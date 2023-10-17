@@ -1,0 +1,102 @@
+<!--{% extends 'base.html' %}-->
+
+<!--{% block title %} | Inquiry {% endblock %}-->
+<!--{% block content %}-->
+
+<!--{% load static %}-->
+
+<!--<div class="sub-banner overview-bgi">-->
+<!--    <div class="container breadcrumb-area">-->
+<!--        <div class="breadcrumb-areas">-->
+<!--            <h1>Car Inquiry </h1>-->
+<!--            <ul class="breadcrumbs">-->
+<!--                <li><a href="{% url 'home' %}">Home</a></li>-->
+<!--                <li class="active">Inquiry</li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="container mt-4 mb-20">-->
+<!--    <div class="row justify-content-center">-->
+<!--        <div class="col-md-6">-->
+<!--            <h2 class="text-center mb-4">Car Inquiry Form</h2>-->
+<!--            <form method="post" action="{% url 'inquiry' %}">-->
+<!--                {% csrf_token %}-->
+<!--                <div class="row">-->
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="car_title">Car Title</label>-->
+<!--                            <input type="text" class="form-control form-control-md" id="car_title" name="car_title" required>-->
+<!--                        </div>-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="user_id">User ID</label>-->
+<!--                            <input type="text" class="form-control form-control-md" id="user_id" name="user_id"-->
+<!--                                   pattern="[0-9]+" title="Please enter only numbers" required>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; More fields for the left column &ndash;&gt;-->
+<!--                    </div>-->
+
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="first_name">First Name</label>-->
+<!--                            <input type="text" class="form-control form-control-md" id="first_name" name="first_name" required>-->
+<!--                        </div>-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="last_name">Last Name</label>-->
+<!--                            <input type="text" class="form-control form-control-md" id="last_name" name="last_name" required>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; More fields for the right column &ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="row">-->
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="customer_need">Customer Need</label>-->
+<!--                            <input type="text" class="form-control form-control-md" id="customer_need"-->
+<!--                                   name="customer_need" required>-->
+<!--                        </div>-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="city">City</label>-->
+<!--                            <input type="text" class="form-control form-control-md" id="city" name="city" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="state">State</label>-->
+<!--                            <input type="text" class="form-control form-control-md" id="state" name="state" required>-->
+<!--                        </div>-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="email">Email</label>-->
+<!--                            <input type="email" class="form-control form-control-md" id="email" name="email" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="row">-->
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="phone">Phone</label>-->
+<!--                            <input type="text" class="form-control form-control-md" id="phone" name="phone" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--&lt;!&ndash;                    <div class="col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="form-group text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <label for="messages">Message</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <textarea class="form-control" id="messages" name="messages" required></textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                </div>-->
+
+<!--                <div class="form-group mb-0 clearfix text-center pt-4">-->
+<!--                    <button type="submit" class="btn-md btn-primary">Submit</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--{% endblock %}-->

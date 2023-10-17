@@ -1,0 +1,105 @@
+{% load static %}
+<!-- Main header start -->
+
+<header class="main-header sticky-header header-with-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand company-logo" href="{% url 'about' %}">
+                <img src="{% static 'img/logos/cardealerLogo.png' %}"
+                     style="height: 30px; weight: 30px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="navbar-collapse collapse w-100" id="navbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a
+                            {% if '/' == request.path %}
+                                class="nav-link"
+                            {% else %}
+                                class="nav-link"
+                            {% endif %}
+                                href="{% url 'home' %}">
+                                Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            {% if 'cars' in request.path %}
+                                class="nav-link active"
+                            {% else %}
+                                class="nav-link"
+                            {% endif %}
+                             href="{% url 'cars' %}">
+                                Cars
+                        </a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a-->
+<!--                            {% if 'our_products' in request.path %}-->
+<!--                            class="nav-link active"-->
+<!--                            {% else %}-->
+<!--                            class="nav-link"-->
+<!--                            {% endif %}-->
+<!--                             href="{% url 'our_products' %}">-->
+<!--                                Our Products-->
+<!--                        </a>-->
+<!--                    </li>-->
+                    <li class="nav-item dropdown">
+                        <a
+                            {% if 'our_products' in request.path %}
+                                class="nav-link active"
+                            {% else %}
+                                class="nav-link"
+                            {% endif %}
+                             href="{% url 'our_products' %}">
+                                OUR PRODUCTS
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a
+                            {% if 'about' in request.path %}
+                            class="nav-link active"
+                            {% else %}
+                            class="nav-link"
+                            {% endif %}
+                             href="{% url 'about' %}">
+                                About
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a
+                            {% if 'contact' in request.path %}
+                                class="nav-link active"
+                            {% else %}
+                                class="nav-link"
+                            {% endif %}
+                             href="{% url 'contact' %}">Contact Us
+                        </a>
+                    </li>
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a-->
+<!--                            {% if 'inquiry' in request.path %}-->
+<!--                                class="nav-link active"-->
+<!--                            {% else %}-->
+<!--                                class="nav-link"-->
+<!--                            {% endif %}-->
+<!--                             href="{% url 'inquiry' %}">Car Inquiry-->
+<!--                        </a>-->
+<!--                    </li>-->
+                    <li class="nav-item dropdown m-hide">
+                        <a href="#full-page-search" class="nav-link h-icon">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- Main header end -->
