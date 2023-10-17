@@ -4,7 +4,6 @@ from .models import Inquiry
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-# from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -12,11 +11,11 @@ def inquiry(request):
     if request.method == 'POST':
         form = InquiryForm(request.POST)
         if form.is_valid():
-            inquiry = Inquiry.objects.create(**form.cleaned_data)
+            inquiry = form.save()
 
             # Send email notification to admin
             subject = 'You Have A New Inquiry'
-            message = f'You have a new inquiry from your Website:\n\n{form.cleaned_data["message"]}'
+            message = f'You have a new inquiry from your Website:\n\n{inquiry.message}'
             from_email = settings.DEFAULT_FROM_EMAIL
             recipient_list = [settings.DEFAULT_FROM_EMAIL]
 
