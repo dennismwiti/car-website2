@@ -7,6 +7,8 @@
     <title>product details</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; upgrade-insecure-requests;">
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/img2/favicon.ico">
 
@@ -155,7 +157,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product_d_right">
                         <form action="#">
-
+                            {% csrf_token %}
                             <h1>{{single_accessory.name}}</h1>
 <!--                            <div class="product_nav">-->
 <!--                                <ul>-->
@@ -424,6 +426,7 @@
                             <p>We’ll never share your email address with a third-party.</p>
                             <div class="subscribe_form">
                                 <form id="mc-form" class="mc-form footer-newsletter">
+                                    {% csrf_token %}
                                     <input id="mc-email" type="email" autocomplete="off" placeholder="Enter you email address here..." />
                                     <button id="mc-submit">Subscribe</button>
                                 </form>

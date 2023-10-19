@@ -9,6 +9,8 @@
     <title>Car Accessories Shop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; upgrade-insecure-requests;">
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/img2/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/static/fonts2/fontawesome-webfont3e6e.woff2?v=4.7.0">
@@ -95,6 +97,7 @@
                             <div class="search-container">
                                 <!-- Update the form action to use the 'search_accessory' URL -->
                                 <form action="{% url 'search_accessory' %}" method="get">
+                                    {% csrf_token %}
                                     <div class="search_box">
                                         <!-- Update the input field name to 'query' -->
                                         <input name="query" placeholder="Search entire store here ..." type="text"
@@ -317,6 +320,7 @@
                             <div class="widget_list widget_filter">
                                 <h2>Filter by price</h2>
                                 <form method="GET" action="{% url 'filter_accessories' %}">
+                                    {% csrf_token %}
                                     <div class="row">
                                         <div class="col-6">
                                             <select class="form-control" name="min_price">
@@ -634,6 +638,7 @@
                             <p>We’ll never share your email address with a third-party.</p>
                             <div class="subscribe_form">
                                 <form id="mc-form" class="mc-form footer-newsletter">
+                                    {% csrf_token %}
                                     <input id="mc-email" type="email" autocomplete="off" placeholder="Enter you email address here..." />
                                     <button id="mc-submit">Subscribe</button>
                                 </form>
@@ -717,8 +722,9 @@
                                         </div>
                                         <div class="modal_add_to_cart">
                                             <form action="#">
+                                                {% csrf_token %}
                                                 <input min="1" max="100" step="2" value="1" type="number">
-                                                <button type="submit">add to cart</button>
+                                                <button type="submit">Send a message</button>
                                             </form>
                                         </div>
                                     </div>

@@ -20733,7 +20733,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   transform: translatey(-50%);
   left: 0;
   right: 0;
-  text-align: center;
+  text-align: center;s
   opacity: 0;
   visibility: hidden;
 }

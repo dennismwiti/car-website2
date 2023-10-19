@@ -6,9 +6,11 @@
     // Showing page loader
     $(window).on('load', function () {
         populateColorPlates();
-        setTimeout(function () {
-            $(".page_loader").fadeOut("fast");
-        }, 100);
+        var loader = $(".page_loader");
+        if (loader.length > 0) {
+            // fade out the loader
+            loader.fadeOut("fast");
+        }
 
         if ($('body .filter-portfolio').length > 0) {
             $(function () {

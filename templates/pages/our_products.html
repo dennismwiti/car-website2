@@ -9,6 +9,8 @@
     <title>Car Accessories Shop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; upgrade-insecure-requests;">
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/img2/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/static/fonts2/fontawesome-webfont3e6e.woff2?v=4.7.0">
@@ -810,6 +812,7 @@
                             <p>We’ll never share your email address with a third party.</p>
                             <div class="subscribe_form">
                                 <form id="mc-form" class="mc-form footer-newsletter">
+                                    {% csrf_token %}
                                     <input id="mc-email" type="email" autocomplete="off" placeholder="Enter you email address here..." />
                                     <button id="mc-submit"  style="  background: rgb(64, 224, 208);">Subscribe</button>
                                 </form>
@@ -882,7 +885,8 @@
                                             <p>
                                                 No Descriptions available
                                             </p>
-                                        {% endif %}                                    </div>
+                                        {% endif %}
+                                    </div>
                                     <div class="variants_selects">
                                         <div class="variants_size">
                                             <h2>size</h2>
@@ -906,8 +910,9 @@
                                         </div>
                                         <div class="modal_add_to_cart">
                                             <form action="#">
+                                                {% csrf_token %}
                                                 <input min="1" max="100" step="2" value="1" type="number">
-                                                <button type="submit">add to cart</button>
+                                                <button type="submit">Send a Message</button>
                                             </form>
                                         </div>
                                     </div>
