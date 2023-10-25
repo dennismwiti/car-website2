@@ -7,7 +7,13 @@
     <title>product details</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        style-src 'self' 'unsafe-inline' /static/css2/style.css;
+        script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com
+                          https://stackpath.bootstrapcdn.com 'unsafe-inline';
+        upgrade-insecure-requests;
+    ">
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/img2/favicon.ico">
@@ -40,54 +46,56 @@
 
     <!--modernizr min js here-->
     <script src="/static/js2/vendor/modernizr-3.7.1.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Using a single CDN for jQuery, Popper.js, and Bootstrap -->
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+
 
 
     <style>
-    /* Additional styles specific to the modal */
-    body {
-      padding-top: 20px;
-    }
+        /* Additional styles specific to the modal */
+        body {
+          padding-top: 20px;
+        }
 
-    .modal-header {
-      background-color: #f8f9fa;
-    }
+        .modal-header {
+          background-color: #f8f9fa;
+        }
 
-    .modal-content {
-      border: none;
-    }
+        .modal-content {
+          border: none;
+        }
 
-    .modal-body {
-      padding: 1rem;
-    }
+        .modal-body {
+          padding: 1rem;
+        }
 
-    #inquiryModal {
-      background-color: rgba(0, 0, 0, 0.8); /* Adjust the last value (0.7) for modal opacity */
-    }
+        #inquiryModal {
+          background-color: rgba(0, 0, 0, 0.8); /* Adjust the last value (0.7) for modal opacity */
+        }
 
-    /* Custom CSS for fade.show effect */
-    .fade.show {
-      opacity: 1;
-      transition: opacity 0.3s ease; /* Adjust the duration and timing function as needed */
-    }
+        /* Custom CSS for fade.show effect */
+        .fade.show {
+          opacity: 1;
+          transition: opacity 0.3s ease; /* Adjust the duration and timing function as needed */
+        }
 
-    /* Custom CSS for spacing in form-group */
-    .form-group {
-      margin-bottom: 15px; /* Adjust the value as needed for your desired spacing */
-    }
+        /* Custom CSS for spacing in form-group */
+        .form-group {
+          margin-bottom: 15px; /* Adjust the value as needed for your desired spacing */
+        }
 
 
-    .form-control {
-    color: #495057 !important;
-    padding-left: 15px;
-    }
+        .form-control {
+        color: #495057 !important;
+        padding-left: 15px;
+        }
 
-    .form-control:disabled,
-    .form-control[readonly] {
-      background-color:#ffeced;
-      opacity: 1;
+        .form-control:disabled,
+        .form-control[readonly] {
+          background-color:#ffeced;
+          opacity: 1;
   </style>
 
 </head>
@@ -159,12 +167,6 @@
                         <form action="#">
                             {% csrf_token %}
                             <h1>{{single_accessory.name}}</h1>
-<!--                            <div class="product_nav">-->
-<!--                                <ul>-->
-<!--                                    <li class="prev"><a href="product-details.html"><i class="fa fa-angle-left"></i></a></li>-->
-<!--                                    <li class="next"><a href="variable-product.html"><i class="fa fa-angle-right"></i></a></li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
                             <div class=" product_ratting">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -394,10 +396,10 @@
                             <h3>Information</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="#">About Us</a></li>
                                     <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="privacy-policy.html">privacy policy</a></li>
-                                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                                    <li><a href="#">privacy policy</a></li>
+                                    <li><a href="#">Coming Soon</a></li>
                                     <li><a href="#">Terms & Conditions</a></li>
                                     <li><a href="#">Returns</a></li>
                                     <li><a href="#">Gift Certificates</a></li>
@@ -412,7 +414,7 @@
                                 <ul>
                                     <li><a href="#">Returns</a></li>
                                     <li><a href="#">Order History</a></li>
-                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="#">Wish List</a></li>
                                     <li><a href="#">Newsletter</a></li>
                                     <li><a href="#">Affiliate</a></li>
                                     <li><a href="#">Specials</a></li>
@@ -448,33 +450,33 @@
 
 <!-- JS
 ============================================ -->
-<!--jquery min js-->
-<script src="/static/js2/vendor/jquery-3.4.1.min.js"></script>
-<!--popper min js-->
-<script src="/static/js2/popper.js"></script>
-<!--bootstrap min js-->
-<script src="/static/js2/bootstrap.min.js"></script>
-<!--owl carousel min js-->
-<script src="/static/js2/owl.carousel.min.js"></script>
-<!--slick min js-->
-<script src="/static/js2/slick.min.js"></script>
-<!--magnific popup min js-->
-<script src="/static/js2/jquery.magnific-popup.min.js"></script>
-<!--jquery countdown min js-->
-<script src="/static/js2/jquery.countdown.js"></script>
-<!--jquery ui min js-->
-<script src="/static/js2/jquery.ui.js"></script>
-<!--jquery elevatezoom min js-->
-<script src="/static/js2/jquery.elevatezoom.js"></script>
-<!--isotope packaged min js-->
-<script src="/static/js2/isotope.pkgd.min.js"></script>
-<!--slinky menu js-->
-<script src="/static/js2/slinky.menu.js"></script>
-<!-- Plugins JS -->
-<script src="/static/js2/plugins.js"></script>
+    <!--jquery min js-->
+    <script src="/static/js2/vendor/jquery-3.4.1.min.js"></script>
+    <!--popper min js-->
+    <script src="/static/js2/popper.js"></script>
+    <!--bootstrap min js-->
+    <script src="/static/js2/bootstrap.min.js"></script>
+    <!--owl carousel min js-->
+    <script src="/static/js2/owl.carousel.min.js"></script>
+    <!--slick min js-->
+    <script src="/static/js2/slick.min.js"></script>
+    <!--magnific popup min js-->
+    <script src="/static/js2/jquery.magnific-popup.min.js"></script>
+    <!--jquery countdown min js-->
+    <script src="/static/js2/jquery.countdown.js"></script>
+    <!--jquery ui min js-->
+    <script src="/static/js2/jquery.ui.js"></script>
+    <!--jquery elevatezoom min js-->
+    <script src="/static/js2/jquery.elevatezoom.js"></script>
+    <!--isotope packaged min js-->
+    <script src="/static/js2/isotope.pkgd.min.js"></script>
+    <!--slinky menu js-->
+    <script src="/static/js2/slinky.menu.js"></script>
+    <!-- Plugins JS -->
+    <script src="/static/js2/plugins.js"></script>
 
-<!-- Main JS -->
-<script src="/static/js2/main.js"></script>
+    <!-- Main JS -->
+    <script src="/static/js2/main.js"></script>
 
 </body>
 

@@ -1,3 +1,4 @@
+# import uuid
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
@@ -235,3 +236,7 @@ def search_accessory(request):
 								'paged_accessory': paged_accessory
 				}
 				return render(request, 'products/accessories.html', context)
+
+
+# def get_random_nonce():
+# 				return str(uuid.uuid4())

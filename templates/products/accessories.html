@@ -9,7 +9,11 @@
     <title>Car Accessories Shop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        style-src 'self' 'unsafe-inline' /static/css2/style.css;
+        upgrade-insecure-requests;
+    ">
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/img2/favicon.ico">
@@ -48,7 +52,7 @@
     <!--modernizr min js here-->
     <script src="/static/js2/vendor/modernizr-3.7.1.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>-->
 
 
     <!-- Live search Javascript -->
@@ -97,7 +101,7 @@
                             <div class="search-container">
                                 <!-- Update the form action to use the 'search_accessory' URL -->
                                 <form action="{% url 'search_accessory' %}" method="get">
-                                    {% csrf_token %}
+<!--                                    {% csrf_token %}-->
                                     <div class="search_box">
                                         <!-- Update the input field name to 'query' -->
                                         <input name="query" placeholder="Search entire store here ..." type="text"
@@ -320,7 +324,6 @@
                             <div class="widget_list widget_filter">
                                 <h2>Filter by price</h2>
                                 <form method="GET" action="{% url 'filter_accessories' %}">
-                                    {% csrf_token %}
                                     <div class="row">
                                         <div class="col-6">
                                             <select class="form-control" name="min_price">
@@ -461,8 +464,8 @@
                                         <div class="action_links">
                                             <ul>
                                                 <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                                <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
+                                                <li class="wishlist"><a href="#" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                                <li class="compare"><a href="#" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -483,7 +486,7 @@
                                                     <span class="old_price">$3200.00</span>
                                                 </div>
                                                 <div class="add_to_cart">
-                                                    <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                                    <a href="#" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -522,8 +525,6 @@
                                             <div class="action_links_btn">
                                                 <ul>
                                                     <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-<!--                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>-->
-<!--                                                    <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>-->
                                                 </ul>
                                             </div>
                                         </div>
@@ -606,10 +607,10 @@
                             <h3>Information</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="#">About Us</a></li>
                                     <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="privacy-policy.html">privacy policy</a></li>
-                                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                                    <li><a href="#">privacy policy</a></li>
+                                    <li><a href="#">Coming Soon</a></li>
                                     <li><a href="#">Terms & Conditions</a></li>
                                     <li><a href="#">Returns</a></li>
                                     <li><a href="#">Gift Certificates</a></li>
@@ -624,7 +625,7 @@
                                 <ul>
                                     <li><a href="#">Returns</a></li>
                                     <li><a href="#">Order History</a></li>
-                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="#">Wish List</a></li>
                                     <li><a href="#">Newsletter</a></li>
                                     <li><a href="#">Affiliate</a></li>
                                     <li><a href="#">Specials</a></li>

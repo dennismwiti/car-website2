@@ -4,9 +4,11 @@ from cars.models import Car
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.contrib import messages
-
+# import uuid
+import hashlib
 
 # Create your views here.
+
 
 def home(request):
     teams = Team.objects.all()
@@ -83,3 +85,11 @@ def contact(request):
         messages.success(request, 'Thank you for contacting us. We will get back to you shortly')
 
     return render(request, 'pages/contact.html')
+
+
+# def get_random_nonce():
+#     return str(uuid.uuid4())
+
+def get_style_hash():
+    style_content = "your_style_content_here"
+    return hashlib.sha256(style_content.encode('utf-8')).hexdigest()

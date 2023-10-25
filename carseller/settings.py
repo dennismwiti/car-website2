@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+from carseller.config import EMAIL_HOST_PASSWORD, SECRET_KEY
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5#960k2$m!nb8hynvxzkzpld%7w*nikl-oukpk49i!)s_lia)a'
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,6 +31,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 SITE_ID = 1
+
+SERVER_HEADER = 'default'
 
 # Application definition
 
@@ -140,8 +144,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# ASSESTS_URL = '/assests/'
-# ASSESTS_ROOT = os.path.join(BASE_DIR, 'assests')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -149,11 +151,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'carseller/static'),
 ]
-
-# ASSESTSFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'carseller/assests'),
-# ]
-
 
 # FFMPEG_PATH = "/venv/lib/site-packages"
 
@@ -206,5 +203,28 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True  # Replace with your Gmail address
-EMAIL_HOST_PASSWORD = 'avxqlyzlozikcyay'  # Replace with your Gmail password or an App Password
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD  # Replace with your Gmail password or an App Password
 EMAIL_HOST_USER = 'blockbuster045@gmail.com'
+
+# Session settings
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 86400  # 1 day in seconds
+SESSION_COOKIE_NAME = 'car_django'
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+CSRF_USE_SESSIONS = True
+
+
+# settings.py
+#
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# X_FRAME_OPTIONS = 'DENY'
+# SECURE_SSL_REDIRECT = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_BROWSER_XSS_FILTER = True
+# # Disable the Server information in the HTTP response header
+SECURE_SERVER_HEADERS = True

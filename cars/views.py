@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Car
 from django.http import HttpResponse
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.middleware.csrf import get_token
+# from django.views.decorators.http import require_POST
+from .models import Car
+import hashlib
 
 
 # Create your views here.
@@ -17,15 +20,18 @@ def cars(request):
     body_style_search = Car.objects.values_list('body_style', flat=True).distinct()
     brand_slug_search = Car.objects.values_list('brand_slug', flat=True).distinct()
 
-    data = {
+    # Set CSRF token as HTTP Only cookie for security
+    csrf_token = get_token(request)
+    response = render(request, 'cars/cars.html', {
         'cars': paged_cars,
         'model_search': model_search,
         'city_search': city_search,
         'year_search': year_search,
         'body_style_search': body_style_search,
         'brand_slug_search': brand_slug_search,
-    }
-    return render(request, 'cars/cars.html', data)
+    })
+    response.set_cookie('csrftoken', csrf_token, httponly=True, samesite='Strict')
+    return response
 
 
 def car_detail(request, id, no_car=False):
@@ -88,15 +94,20 @@ def search(request):
         if max_price:
             cars = cars.filter(price__lte=max_price)
 
-    data = {
-        'cars': cars,
-        'model_search': model_search,
-        'city_search': city_search,
-        'year_search': year_search,
-        'body_style_search': body_style_search,
-        'brand_slug_search': brand_slug_search,
-    }
-    return render(request, 'cars/search.html', data)
+        response = render(request, 'cars/search.html', {
+            'cars': cars,
+            'model_search': model_search,
+            'city_search': city_search,
+            'year_search': year_search,
+            'body_style_search': body_style_search,
+            'brand_slug_search': brand_slug_search,
+        })
 
+        return response
+
+
+def get_style_hash():
+    style_content = "your_style_content_here"
+    return hashlib.sha256(style_content.encode('utf-8')).hexdigest()
 
 

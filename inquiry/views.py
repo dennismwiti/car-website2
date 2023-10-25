@@ -1,3 +1,4 @@
+# import uuid
 from django.shortcuts import render, redirect
 from .forms import InquiryForm
 from .models import Inquiry
@@ -51,3 +52,6 @@ def delete_inquiry(request, inquiry_id):
 
     return redirect('dashboard')
 
+
+# def get_random_nonce():
+#     return str(uuid.uuid4())

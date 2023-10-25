@@ -9,7 +9,11 @@
     <title>Car Accessories Shop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        style-src 'self' 'unsafe-inline' /static/css2/style.css;
+        upgrade-insecure-requests;
+    ">
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/img2/favicon.ico">
@@ -376,8 +380,8 @@
                                                 <div class="action_links">
                                                     <ul>
                                                         <li class="quick_button"><a href="{% url 'quick_view' accessory.id %}" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                                        <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
+                                                        <li class="wishlist"><a href="#" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                                        <li class="compare"><a href="#" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -541,7 +545,7 @@
                     <div class="new_product_container">
                         <div class="sample_product">
                             <div class="product_name">
-                                <h3><a href="product-details.html">1. New and sale new badge product </a></h3>
+                                <h3><a href="#">1. New and sale new badge product </a></h3>
                                 <div class="manufacture_product">
                                     <p><a href="#">Hewlett-Packard</a></p>
                                 </div>
@@ -626,7 +630,6 @@
                                 <div class="banner_text">
                                     <h3>Car Audio</h3>
                                     <h2>Super Natural Sound</h2>
-<!--                                    <a href="accessories.html">Shop Now</a>-->
                                 </div>
                             </div>
                         </div>
@@ -671,8 +674,8 @@
                                             <div class="action_links">
                                                 <ul>
                                                     <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                                    <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
+                                                    <li class="wishlist"><a href="#" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                                    <li class="compare"><a href="#" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -691,7 +694,7 @@
                                                     <span class="regular_price">KSH {{accessory.price | intcomma}}</span>
                                                 </div>
                                                 <div class="add_to_cart">
-                                                    <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                                    <a href="#" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -780,10 +783,10 @@
                             <h3>Information</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="#">About Us</a></li>
                                     <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="privacy-policy.html">privacy policy</a></li>
-                                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                                    <li><a href="#">privacy policy</a></li>
+                                    <li><a href="#">Coming Soon</a></li>
                                     <li><a href="#">Terms & Conditions</a></li>
                                     <li><a href="#">Returns</a></li>
                                     <li><a href="#">Gift Certificates</a></li>
@@ -798,7 +801,7 @@
                                 <ul>
                                     <li><a href="#">Returns</a></li>
                                     <li><a href="#">Order History</a></li>
-                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="#">Wish List</a></li>
                                     <li><a href="#">Newsletter</a></li>
                                     <li><a href="#">Affiliate</a></li>
                                     <li><a href="#">Specials</a></li>
@@ -839,7 +842,6 @@
         </div>
     </footer>
     <!--footer area end-->
-
 
 
     <!-- modal area start-->
@@ -938,7 +940,6 @@
     <!-- modal area end-->
 
 
-
     <!-- JS
     ============================================ -->
     <!--jquery min js-->
@@ -968,15 +969,6 @@
 
     <!-- Main JS -->
     <script src="/static/js2/main.js"></script>
-
-<!--    <script>-->
-<!--        document.onreadystatechange = function () {-->
-<!--            if (document.readyState === "complete") {-->
-<!--                // Hide the loader when the page is fully loaded-->
-<!--                document.querySelector('.loader-wrapper').style.display = 'none';-->
-<!--            }-->
-<!--        };-->
-<!--    </script>-->
 
 </body>
 
