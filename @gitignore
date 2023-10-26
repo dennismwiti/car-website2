@@ -1,4 +1,8 @@
 .venv/
+config/
 
+.config/
+
+.config.py/
 .config.py
 *.config.py
