@@ -12,6 +12,7 @@
         style-src 'self' 'unsafe-inline' /static/css2/style.css;
         script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com
                           https://stackpath.bootstrapcdn.com 'unsafe-inline';
+        font-src 'self' https://fonts.gstatic.com;
         upgrade-insecure-requests;
     ">
 
@@ -46,10 +47,11 @@
 
     <!--modernizr min js here-->
     <script src="/static/js2/vendor/modernizr-3.7.1.min.js"></script>
+
     <!-- Using a single CDN for jQuery, Popper.js, and Bootstrap -->
-<!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>-->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
-<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
 
@@ -109,8 +111,8 @@
         <div class="header_middle">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-12">
-                        <div class="header_bottom_container">
+                    <div class="col-12 align-items-center">
+                        <div class="header_bottom_container align-items-center">
                             <div class="main_menu">
                                 <nav class="centered-nav align-items-center text-center">
                                     <ul>

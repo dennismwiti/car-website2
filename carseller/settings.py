@@ -32,11 +32,12 @@ ALLOWED_HOSTS = []
 
 SITE_ID = 1
 
-SERVER_HEADER = 'default'
+SERVER_HEADER = None
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 'csp',
     'jazzmin',
     'message',
     'accounts.apps.AccountsConfig',
@@ -60,6 +61,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'carseller.middlewares.HideServerMiddleware',
+    # 'csp.middleware.CSPMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,6 +72,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
 ]
+
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+# SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 86400  # One year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+X_FRAME_OPTIONS = 'DENY'
+
+# CSP_DEFAULT_SRC = ("'self'",)
 
 ROOT_URLCONF = 'carseller.urls'
 

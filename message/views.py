@@ -4,7 +4,7 @@ from .models import Message
 from django.contrib.auth.decorators import login_required
 
 
-@login_required
+# @login_required
 def send_message(request):
     if request.method == 'POST':
         try:

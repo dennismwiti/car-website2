@@ -9,15 +9,11 @@
     <title>CarDealer Website {% block title %}    {% endblock %}</title>
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        style-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com
-                                         https://cdnjs.cloudflare.com
+        style-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com https://cdnjs.cloudflare.com 'unsafe-eval'
                                          {% static 'css/style.css' %} https://fonts.googleapis.com;
-
-        script-src 'self' https://code.jquery.com
-                                          https://cdn.jsdelivr.net
-                                          https://cdnjs.cloudflare.com 'unsafe-inline' ;
-
+        script-src 'self' https://code.jquery.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline';
         font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
+        frame-src 'self' https://www.youtube.com;
         upgrade-insecure-requests;
     ">
 
@@ -77,14 +73,14 @@
 {% endblock %}
 
 <!-- Full Page Search -->
-<div id="full-page-search">
-    <button type="button" class="close">×</button>
-    <form action="{% url 'search' %}" class="search-header">
-        {% csrf_token %}
-        <input type="search" value="" placeholder="type keyword(s) here. Eg: audi, benz etc" name='keyword'/>
-        <button type="submit" class="btn btn-sm button-theme">Search</button>
-    </form>
-</div>
+<!--<div id="full-page-search">-->
+<!--    <button type="button" class="close">×</button>-->
+<!--    <form action="{% url 'search' %}" class="search-header">-->
+<!--        {% csrf_token %}-->
+<!--        <input type="search" value="" placeholder="type keyword(s) here. Eg: audi, benz etc" name='keyword'/>-->
+<!--        <button type="submit" class="btn btn-sm button-theme">Search</button>-->
+<!--    </form>-->
+<!--</div>-->
 
 {% block footer %}
     {% include 'includes/footer.html' %}
