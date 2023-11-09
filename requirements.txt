@@ -1,7 +1,7 @@
 appdirs==1.4.4
 asgiref==3.7.2
 certifi==2023.7.22
-cffi==1.16.0
+cffi==1.14.6
 charset-normalizer==3.3.2
 click==8.1.7
 commonmark==0.9.1
