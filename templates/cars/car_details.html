@@ -367,20 +367,21 @@
 
                               <input type="hidden" name="car_id" value="{{single_car.id}}">
                                 <div class="form-group">
-                                  <label for="Name" class="col-form-label">Hello, My Name is</label>
+                                  <label for="first_name" class="col-form-label">Hello, My Name is</label>
                                   <div class="row">
                                     <div class="col">
-                                      <input type="text" name="first_name" class="form-control" placeholder="First Name"
+                                      <input type="text" id="first_name" name="first_name" class="form-control" placeholder="First Name"
                                       {% if user.is_authenticated %} value="{{user.first_name}}"  {% endif %} required>
                                     </div>
                                     <div class="col">
-                                      <input type="text" name="last_name" class="form-control" placeholder="Last Name"
+                                      <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last Name"
                                        {% if user.is_authenticated %} value="{{user.last_name}}"  {% endif %} required>
                                     </div>
                                   </div>
                                 </div>
                                   <div class="form-group">
-                                      <select class="form-control" id="sel1" name="customer_need">
+                                      <label for="customer_need">I'm interested in</label>
+                                      <select class="form-control" id="customer_need" name="customer_need">
                                         <option value="I'm interested in this">I'm interested in this</option>
                                         <option value="I'd like to know your best price for this">I'd like to know your best price for this</option>
                                         <option value="I'd like to Schedule a Test Drive">I'd like to Schedule a Test Drive</option>
@@ -396,13 +397,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                  <label for="name" class="col-form-label">I live in</label>
+                                  <label for="city" class="col-form-label">I live in</label>
                                   <div class="row">
                                     <div class="col">
-                                      <input type="text" name="city" class="form-control" placeholder="City" required>
+                                      <input type="text" id="city" name="city" class="form-control" placeholder="City" required>
                                     </div>
                                     <div class="col">
-                                      <input type="text" name="state" class="form-control" placeholder="State" required>
+                                      <input type="text" id="state" name="state" class="form-control" placeholder="State" required>
                                     </div>
                                   </div>
                                 </div>
@@ -410,13 +411,13 @@
                                 <div class="form-group">
                                   <div class="row">
                                     <div class="col">
-                                        <label for="name" class="col-form-label">You can reach me by email at</label>
-                                      <input type="email" name="email" class="form-control" placeholder="Email Address"
+                                        <label for="email" class="col-form-label">You can reach me by email at</label>
+                                      <input type="email" id="email" name="email" class="form-control" placeholder="Email Address"
                                        {% if user.is_authenticated %} value="{{user.email}}"  {% endif %} required>
                                     </div>
                                     <div class="col">
                                         <label for="phone" class="col-form-label">or by cell at</label>
-                                      <input type="text" name="phone" placeholder="Phone Number (optional)" class="form-control">
+                                      <input type="text" id="phone" name="phone" placeholder="Phone Number (optional)" class="form-control">
                                     </div>
                                   </div>
                                 </div>

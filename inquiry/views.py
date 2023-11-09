@@ -14,13 +14,13 @@ def inquiry(request):
         if form.is_valid():
             inquiry = form.save()
 
-            # Send email notification to admin
-            subject = 'You Have A New Inquiry'
-            message = f'You have a new inquiry from your Website:\n\n{inquiry.message}'
-            from_email = settings.DEFAULT_FROM_EMAIL
-            recipient_list = [settings.DEFAULT_FROM_EMAIL]
-
-            send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+            # # Send email notification to admin
+            # subject = 'You Have A New Inquiry'
+            # message = f'You have a new inquiry from your Website:\n\n{inquiry.message}'
+            # from_email = settings.DEFAULT_FROM_EMAIL
+            # recipient_list = [settings.DEFAULT_FROM_EMAIL]
+            #
+            # send_mail(subject, message, from_email, recipient_list, fail_silently=False)
 
             messages.success(request, 'Inquiry submitted successfully.')
             return redirect('dashboard')
