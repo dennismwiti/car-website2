@@ -184,12 +184,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #     os.path.join(BASE_DIR, 'carseller/static'),
 # ]
 
-STORAGES = {
-    # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     # ...
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
 
 # FFMPEG_PATH = "/venv/lib/site-packages"
 
