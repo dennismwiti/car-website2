@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # 'csp',
     'jazzmin',
     'message',
+    'whitenoise.runserver_nostatic',
     'accounts.apps.AccountsConfig',
     'cars.apps.CarsConfig',
     'contacts.apps.ContactsConfig',
