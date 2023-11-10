@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 from carseller.config import EMAIL_HOST_PASSWORD, SECRET_KEY
 
@@ -110,17 +111,28 @@ WSGI_APPLICATION = 'carseller.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'carseller',
+#         'USER': 'postgres',
+#         'PASSWORD': 'bumblebee47',
+#         'HOST': '127.0.0.1',  # Set to your PostgreSQL server's hostname
+#         'PORT': '5432',          # Leave it blank to use the default PostgreSQL port (5432)
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'carseller',
-        'USER': 'postgres',
-        'PASSWORD': 'bumblebee47',
-        # 'HOST': '127.0.0.1',  # Set to your PostgreSQL server's hostname
-        # 'PORT': '5432',          # Leave it blank to use the default PostgreSQL port (5432)
+        'NAME': 'carseller_oua4',  # Database name from the External Database URL
+        'USER': 'carseller_oua4_user',  # Database user from the External Database URL
+        'PASSWORD': 'Jrm0hVH7OtG2uiGMDGgm3dANMRUgCTDf',  # Database password from the External Database URL
+        'HOST': 'dpg-cl6tpmquuipc73f3pg10-a.oregon-postgres.render.com',  # Database host from the External Database URL
+        'PORT': '5432',  # Database port from the External Database URL (you can leave it as is)
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
