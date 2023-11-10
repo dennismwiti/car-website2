@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'default_secret_key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['misspowershow.onrender.com']
+ALLOWED_HOSTS = ['misspowershow.onrender.com', '127.0.0.1']
 
 SITE_ID = 1
 
