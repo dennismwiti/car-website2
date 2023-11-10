@@ -116,7 +116,7 @@ class Accessories(models.Model):
                                         validators=[validate_image_file_extension])
     features = MultiSelectField(choices=feature_choices, verbose_name='Features', blank=True, max_length=300)
     is_featured = models.BooleanField(default=False, verbose_name='Is Featured')
-    # created_date = models.DateTimeField(default=datetime.now, blank=True)
+    created_date = models.DateTimeField(default=datetime.now, blank=True)
     is_special = models.BooleanField(default=False, verbose_name='Is Special')
     stock = models.IntegerField(default=0)
 
