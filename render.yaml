@@ -1,7 +1,7 @@
 services:
   - name: web
     buildCommand: python manage.py collectstatic --noinput
-    buildDir: /Desktop/PythonProjects/car-website2
+    buildDir: /opt/render/project/src
 
 env:
   - key: DJANGO_SETTINGS_MODULE
@@ -9,4 +9,4 @@ env:
 
 environments:
   - name: primary
-    DJANGO_MEDIA_ROOT: '/PythonProjects/car-website2/media'
+    DJANGO_MEDIA_ROOT: /mnt/data/media/
