@@ -24,6 +24,10 @@ def accessories_list(request):
 
 				special_accessories = Accessories.objects.filter(is_special=True).order_by('price').all()
 
+				# for accessory in accessories:
+				# 				if not accessory.accessory_photo:
+				# 								accessory.accessory_photo_url = ''
+
 				context = {
 								'accessories': accessories,
 								'accessory': paged_cars,
