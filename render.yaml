@@ -1,0 +1,4 @@
+services:
+  -name: web
+  buildCommand: python manage.py collectstatic --noinput
+  buildDir: /Desktop/PythonProjects/car-website2
