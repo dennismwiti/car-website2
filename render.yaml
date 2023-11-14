@@ -1,4 +1,12 @@
 services:
-  -name: web
-  buildCommand: python manage.py collectstatic --noinput
-  buildDir: /Desktop/PythonProjects/car-website2
+  - name: web
+    buildCommand: python manage.py collectstatic --noinput
+    buildDir: /Desktop/PythonProjects/car-website2
+
+env:
+  - key: DJANGO_SETTINGS_MODULE
+    value: "carseller.settings"
+
+environments:
+  - name: primary
+    DJANGO_MEDIA_ROOT: '/Desktop/PythonProjects/car-website2/media'
