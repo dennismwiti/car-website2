@@ -9,4 +9,4 @@ env:
 
 environments:
   - name: primary
-    DJANGO_MEDIA_ROOT: '/Desktop/PythonProjects/car-website2/media'
+    DJANGO_MEDIA_ROOT: '/PythonProjects/car-website2/media'
