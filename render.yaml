@@ -9,4 +9,7 @@ env:
 
 environments:
   - name: primary
-    DJANGO_MEDIA_ROOT: /mnt/data/media/
+    AWS_ACCESS_KEY_ID: 'AKIAYVAQR36KDQSCENST'
+    AWS_SECRET_ACCESS_KEY: 'M5b5DNbxIvrM+fswmPKGH3n2Dj5H3UG+eWJR9OPu'
+    AWS_STORAGE_BUCKET_NAME: 'your-s3-bucket-name'
+    AWS_S3_REGION_NAME: 'US West (Oregon) us-west-2'
