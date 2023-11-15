@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>misspowershow {% block title %}    {% endblock %}</title>
     <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
+        default-src 'self' https://django-carwebsite.s3.amazonaws.com;
         style-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com https://cdnjs.cloudflare.com 'unsafe-eval'
                                          {% static 'css/style.css' %} https://fonts.googleapis.com;
         script-src 'self' https://code.jquery.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline';
