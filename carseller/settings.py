@@ -183,7 +183,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 AWS_ACCESS_KEY_ID = 'AKIAYVAQR36KDQSCENST'
 AWS_SECRET_ACCESS_KEY = 'M5b5DNbxIvrM+fswmPKGH3n2Dj5H3UG+eWJR9OPu'
 AWS_STORAGE_BUCKET_NAME = 'your-s3-bucket-name'
-AWS_S3_REGION_NAME = 'US West (Oregon) us-west-2'
+AWS_S3_REGION_NAME = 'us-west-2'
 
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
