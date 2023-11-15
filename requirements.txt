@@ -38,7 +38,7 @@ marshmallow-dataclass==8.5.14
 mdurl==0.1.2
 mypy-extensions==1.0.0
 oauthlib==3.2.2
-packaging==23.2
+packaging
 Pillow==10.0.0
 postgres==4.0
 psycopg2==2.9.7
