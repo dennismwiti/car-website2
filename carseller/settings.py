@@ -182,7 +182,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AWS_ACCESS_KEY_ID = 'AKIAYVAQR36KDQSCENST'
 AWS_SECRET_ACCESS_KEY = 'M5b5DNbxIvrM+fswmPKGH3n2Dj5H3UG+eWJR9OPu'
-AWS_STORAGE_BUCKET_NAME = 'your-s3-bucket-name'
+AWS_STORAGE_BUCKET_NAME = 'django-carwebsite'
 AWS_S3_REGION_NAME = 'us-west-2'
 
 
