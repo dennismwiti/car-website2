@@ -105,56 +105,159 @@
 <body>
 {% load humanize %}
 
-
-    <header class="header_area header_padding">
-        <!--header top start-->
-        <div class="header_middle">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-12 align-items-center">
-                        <div class="header_bottom_container align-items-center">
-                            <div class="main_menu">
-                                <nav class="centered-nav align-items-center text-center">
-                                    <ul>
-                                        <li><a href="{% url 'our_products' %}">home</a></li>
-                                        <li><a href="{% url 'cars' %}">cars</a></li>
-                                        <li><a href="{% url 'about' %}">about Us</a></li>
-                                        <li><a href="{% url 'contact' %}"> Contact Us</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--header bottom end-->
-    </header>
-
-
-		<!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content text-center">
-                        <ul>
-                            <li><a href="{% url 'our_products' %}">home</a></li>
-                            <li><a href="{% url 'accessories' %}">shop</a></li>
-                            <li>product details</li>
-                        </ul>
-                    </div>
+<header class="top-header th-2 top-header-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-7 justify-content-center text-center ml-5 pl-5">
+                <div class="list-inline">
+                    <a href="tel:+1 125-010-0110"><i class="fa fa-phone p-3"></i>+1 125-010-0110</a>
+                    <a href="tel:info@carweb.cm"><i class="fa fa-envelope p-3"></i>info@carweb.cm</a>
+                    <a href="tel:info@carweb.cm"><i class="fa fa-clock-o p-3"></i>Mon - Sat: 8:00am - 6:30pm</a>
                 </div>
             </div>
         </div>
     </div>
-    <!--breadcrumbs area end-->
+</header>
+<!--    <header class="header_area header_padding">-->
+<!--        &lt;!&ndash;header top start&ndash;&gt;-->
+<!--        <div class="header_middle">-->
+<!--            <div class="container">-->
+<!--                <div class="row align-items-center">-->
+<!--                    <div class="col-6 ml-auto">-->
+
+<!--                        <div class="header_bottom_container align-items-center">-->
+<!--                            <div class="main_menu">-->
+<!--                                <nav class="centered-nav align-items-center text-center">-->
+<!--                                    <ul>-->
+<!--                                        <li><a href="{% url 'home' %}">home</a></li>-->
+<!--                                        <li><a href="{% url 'cars' %}">cars</a></li>-->
+<!--                                        <li><a href="{% url 'about' %}">about Us</a></li>-->
+<!--                                        <li><a href="{% url 'contact' %}"> Contact Us</a></li>-->
+<!--                                    </ul>-->
+<!--                                </nav>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;header bottom end&ndash;&gt;-->
+<!--    </header>-->
+
+
+<header class="main-header sticky-header header-with-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand company-logo" href="{% url 'about' %}">
+                <img src="/static/img2/logo/newlogo-removebg-preview.png"
+                     style="height: 50px; weight: 70px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="navbar-collapse collapse w-100 ml-auto" id="navbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" style="font-weight: 500;">
+                        <a
+                            {% if '/' == request.path %}
+                                class="nav-link"
+                            {% else %}
+                                class="nav-link"
+                            {% endif %}
+                                href="{% url 'home' %}">
+                                Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            {% if 'cars' in request.path %}
+                                class="nav-link active"
+                            {% else %}
+                                class="nav-link"
+                            {% endif %}
+                             href="{% url 'cars' %}">
+                                Cars
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                            {% if 'accessories' in request.path %}
+                                class="nav-link active"
+                            {% else %}
+                                class="nav-link"
+                            {% endif %}
+                             href="{% url 'accessories' %}">
+                                ACCESSORIES
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a
+                            {% if 'about' in request.path %}
+                            class="nav-link active"
+                            {% else %}
+                            class="nav-link"
+                            {% endif %}
+                             href="{% url 'about' %}">
+                                About
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a
+                            {% if 'contact' in request.path %}
+                                class="nav-link active"
+                            {% else %}
+                                class="nav-link"
+                            {% endif %}
+                             href="{% url 'contact' %}">Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+   <!-- Sub banner start -->
+    <div class="sub-banner overview-bgi">
+        <div class="container breadcrumb-area">
+            <div class="breadcrumb-areas">
+                <h1>{{single_accessory.name}}</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="{% url 'accessories' %}">Accessories</a></li>
+                    <li class="active">{{single_accessory.name}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Sub Banner end -->
+
+<!--		&lt;!&ndash;breadcrumbs area start&ndash;&gt;-->
+<!--    <div class="breadcrumbs_area">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                    <div class="breadcrumb_content text-center">-->
+<!--                        <ul>-->
+<!--                            <li><a href="{% url 'home' %}">home</a></li>-->
+<!--                            <li><a href="{% url 'accessories' %}">shop</a></li>-->
+<!--                            <li>product details</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;breadcrumbs area end&ndash;&gt;-->
 
 		<!--product details start-->
-    <div class="product_details mt-20 pt-20">
+    <div class="product_details mt-5 pt-25">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-4 col-md-4">
                     <div class="product-details-tab">
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">

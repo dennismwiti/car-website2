@@ -1074,7 +1074,7 @@ input[type="checkbox"]:checked + label:before {
 
 .banner .banner-slider-inner {
   text-shadow: none;
-  margin-top: 14vh;
+  margin-top: 0;
   right: 0%;
   left: 0%;
   width: 100%;
@@ -7941,6 +7941,12 @@ input[type="tel"] {
   background: url(../img/car-loader.gif) center no-repeat #fff;
 }
 
+/* Responsive adjustments for phones */
+@media (max-width: 767px) {
+  .js .page_loader {
+    background-size: 50px; /* Adjust loader size for smaller screens */
+  }
+}
 
 .slider-section .simple-slider {
   margin-bottom: 30px;
@@ -8316,7 +8322,7 @@ input[type="tel"] {
   }
 
   .sticky-header {
-    margin-top: 70px;
+    margin-top: 60px;
     z-index: 9999;
     width: 100%;
 
@@ -10821,6 +10827,42 @@ ul {
   list-style: outside none none;
   margin: 0;
   padding: 0;
+}
+
+/* Responsive adjustments for phones */
+@media (max-width: 767px) {
+  body {
+    font-size: 12px; /* Adjust font size for smaller screens */
+  }
+
+  h1 {
+    font-size: 36px; /* Adjust heading font size for smaller screens */
+  }
+
+  h2 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  h4 {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  h5 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  h6 {
+    font-size: 10px;
+    line-height: 12px;
+  }
 }
 
 /*--

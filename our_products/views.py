@@ -112,7 +112,7 @@ def filter_accessories(request):
 
 def accessory(request):
 				all_accessory = Accessories.objects.order_by('price').all()
-				paginator = Paginator(all_accessory, 6)
+				paginator = Paginator(all_accessory, 9)
 				page = request.GET.get('page')
 				paged_accessory = paginator.get_page(page)
 

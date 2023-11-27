@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Car Accessories Shop</title>
+    <title>Filter Accessories</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://django-carwebsite.s3.amazonaws.com; style-src 'self' 'unsafe-inline'
@@ -220,24 +220,38 @@
     </header>
         <!--header area end-->
 
-
-    <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content text-center">
-                        <ul>
-                            <li><a href="{%  url 'our_products' %}">home</a></li>
-                            <li><a href="{%  url 'accessories' %}">Shop</a></li>
-                            <li class="active">Filtered Accessories</li>
-                        </ul>
-                    </div>
-                </div>
+    <!-- Sub banner start -->
+    <div class="sub-banner overview-bgi">
+        <div class="container breadcrumb-area">
+            <div class="breadcrumb-areas">
+                <h1 style="font-weight: bold">Filtered Accessories</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="{% url 'accessories' %}">Accessories</a></li>
+                    <li class="active">Filtered Accessories</li>
+                </ul>
             </div>
         </div>
     </div>
-    <!--breadcrumbs area end-->
+    <!-- Sub Banner end -->
+
+
+<!--    &lt;!&ndash;breadcrumbs area start&ndash;&gt;-->
+<!--    <div class="breadcrumbs_area">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                    <div class="breadcrumb_content text-center">-->
+<!--                        <ul>-->
+<!--                            <li><a href="{%  url 'our_products' %}">home</a></li>-->
+<!--                            <li><a href="{%  url 'accessories' %}">Shop</a></li>-->
+<!--                            <li class="active">Filtered Accessories</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;breadcrumbs area end&ndash;&gt;-->
 
     <!--shop  area start-->
     <div class="shop_area shop_reverse">

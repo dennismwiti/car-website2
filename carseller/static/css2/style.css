@@ -10490,3 +10490,269 @@ img {
 }
 
 /* display ends */
+
+
+/* sub-banner starts */
+.sub-banner {
+  background: rgba(0, 0, 0, 0.04) url(../img2/bg/car-1.jpg) top left repeat;
+  background-size: cover;
+  height: 360px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.sub-banner .breadcrumb-area {
+  letter-spacing: 1px;
+  position: absolute;
+  top: 55%;
+  right: 0;
+  opacity: 0.9;
+  left: 0;
+}
+
+.mb-7 {
+  margin-bottom: 7px;
+}
+
+.sub-banner .breadcrumb-area h1 {
+  margin: 0 0 7px;
+  font-weight: 500;
+  color: #fff;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.sub-banner .breadcrumbs li {
+  display: inline-block;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+.sub-banner .breadcrumbs li a {
+  color: #fff;
+}
+
+.sub-banner .breadcrumbs .active {
+  margin-left: 3px;
+  color: #fff;
+}
+
+.sub-banner .breadcrumbs .active:before {
+  margin-right: 7px;
+  content: "/";
+  padding: 0 3px;
+  color: #fff;
+  font: normal normal normal 16px/1 FontAwesome;
+}
+ /* sub-banner ends */
+
+
+ .sticky-header {
+    z-index: 999;
+    width: 100%;
+
+  }
+
+  .header-with-top {
+  background-color: turquoise;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a, button, img, input, span {
+  transition: all 0.3s ease 0s;
+}
+
+  .main-header .navbar-expand-lg .navbar-nav .nav-link {
+    padding: 35px 10px;
+  }
+
+  .sticky-header .navbar-expand-lg .navbar-nav .nav-link {
+    color: #000;
+    opacity: 0.9;
+  }
+
+
+.main-header .company-logo {
+  padding: 15px 0;
+  float: left;
+}
+
+.main-header .company-logo-2 {
+  padding: 15px 0;
+  float: left;
+}
+
+.header-with-top {
+  background-color: turquoise;
+}
+
+.main-header .pad-0 {
+  padding: 0;
+}
+
+.main-header .btn-md {
+  margin-top: 20px;
+}
+
+.main-header .company-logo img {
+  height: 50px;
+}
+
+.main-header .company-logo-2 img {
+  height: 50px;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.header-ml {
+  margin-left: 20px;
+}
+
+.header-transparent {
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+  border-bottom: 1px solid rgba(220, 220, 220, 0.2);
+}
+
+.main-header .navbar-expand-lg .navbar-nav .nav-link {
+  color: #636060;
+}
+
+.main-header .navbar-expand-lg .navbar-nav .nav-link {
+  padding: 32.5px 15px;
+  line-height: 20px;
+  color: #515151;
+  opacity: 1;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+}
+
+.main-header .navbar-expand-lg .navbar-nav .nav-link i {
+  margin-right: 5px;
+}
+
+.main-header .navbar-expand-lg .navbar-nav .link-color:hover {
+  background: transparent;
+}
+
+.main-header .navbar-expand-lg .navbar-nav .link-color {
+  padding: 9px 20px 7px !important;
+  border-radius: 50px;
+  margin: 26px 0 0 10px;
+}
+
+
+.main-header .navbar-expand-lg .user-account {
+  padding: 30px 15px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.main-header .navbar-expand-lg .user-account li {
+  border: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.main-header .navbar-expand-lg .user-account li a {
+  color: #4d4d4d;
+}
+
+.main-header .navbar {
+  padding: 0;
+}
+
+
+
+.main-header .form-inline .submit {
+  padding: 7px 22px;
+  border-radius: 3px;
+  font-size: 14px;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+.main-header .dropdown-menu {
+  min-width: 10rem;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  color: #212529;
+  border: none;
+  -webkit-transition: opacity 0.4s ease 0s, visibility 0.4s linear 0s,
+    -webkit-transform 0.4s ease 0s;
+  transition: opacity 0.4s ease 0s, visibility 0.4s linear 0s,
+    -webkit-transform 0.4s ease 0s;
+  transition: opacity 0.4s ease 0s, transform 0.4s ease 0s,
+    visibility 0.4s linear 0s;
+  transition: opacity 0.4s ease 0s, transform 0.4s ease 0s,
+    visibility 0.4s linear 0s, -webkit-transform 0.4s ease 0s;
+  border-radius: 0;
+  border-top: solid 1px #f1f1f1;
+}
+
+
+.dropdown .dropdown-item:hover > .dropdown-menu {
+  display: block;
+  -webkit-transition: opacity 0.4s ease 0s, visibility 0.4s linear 0s,
+    -webkit-transform 0.4s ease 0s;
+  transition: opacity 0.4s ease 0s, visibility 0.4s linear 0s,
+    -webkit-transform 0.4s ease 0s;
+  transition: opacity 0.4s ease 0s, transform 0.4s ease 0s,
+    visibility 0.4s linear 0s;
+  transition: opacity 0.4s ease 0s, transform 0.4s ease 0s,
+    visibility 0.4s linear 0s, -webkit-transform 0.4s ease 0s;
+}
+
+.main-header .dropdown-menu .dropdown-submenu .dropdown-menu {
+  margin: -1px;
+}
+
+.main-header .dropdown-menu a {
+  padding: 12px 20px;
+  color: #535353;
+  transition: all 0.3s ease-in-out;
+  text-transform: none;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+}
+
+.main-header .dropdown-menu a:hover {
+  background: transparent;
+  -webkit-transform: translateX(5px);
+  transform: translateX(5px);
+}
+
+/* Responsive adjustments for phones */
+@media (max-width: 767px) {
+  .main-header .dropdown-menu a {
+    padding: 10px 15px; /* Adjust padding for smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .main-header .dropdown-menu a:hover {
+    -webkit-transform: none; /* Remove the transform on hover for smaller screens */
+    transform: none;
+  }
+
+  .main-header .dropdown-menu .dropdown-submenu .dropdown-menu {
+    margin: 0; /* Adjust margin for submenu on smaller screens */
+  }
+}
+
