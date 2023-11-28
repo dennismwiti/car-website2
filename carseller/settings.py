@@ -11,12 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
-from typing import Any
-
-import dj_database_url
-from pathlib import Path
-from carseller.config import EMAIL_HOST_PASSWORD, SECRET_KEY
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -114,30 +108,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'carseller.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'carseller',
-#         'USER': 'postgres',
-#         'PASSWORD': 'bumblebee47',
-#         'HOST': '127.0.0.1',  # Set to your PostgreSQL server's hostname
-#         'PORT': '5432',          # Leave it blank to use the default PostgreSQL port (5432)
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'carseller_oua4',  # Database name from the External Database URL
-        'USER': 'carseller_oua4_user',  # Database user from the External Database URL
-        'PASSWORD': 'Jrm0hVH7OtG2uiGMDGgm3dANMRUgCTDf',  # Database password from the External Database URL
-        'HOST': 'dpg-cl6tpmquuipc73f3pg10-a.oregon-postgres.render.com',  # Database host from the External Database URL
-        'PORT': '5432',  # Database port from the External Database URL (you can leave it as is)
+        'NAME': 'carseller_oua4',
+        'USER': 'carseller_oua4_user',
+        'PASSWORD': 'Jrm0hVH7OtG2uiGMDGgm3dANMRUgCTDf',
+        'HOST': 'dpg-cl6tpmquuipc73f3pg10-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
 
@@ -175,19 +153,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-# Development Settings
-if DEBUG:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static'),
-    ]
-
-# Production Settings
-else:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# # Development Settings
+# if DEBUG:
+#     STATIC_URL = '/static/'
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#     STATICFILES_DIRS = [
+#         os.path.join(BASE_DIR, 'static'),
+#     ]
+#
+# # Production Settings
+# else:
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 AWS_ACCESS_KEY_ID = 'AKIAYVAQR36KDQSCENST'
@@ -261,13 +239,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
     # ...
 ]
-#
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True  # Replace with your Gmail address
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'default_email_password')
-# EMAIL_HOST_USER = 'blockbuster045@gmail.com'
+
 
 # Session settings
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
@@ -280,14 +252,5 @@ CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 CSRF_USE_SESSIONS = True
 
-
-# settings.py
-#
-# SECURE_BROWSER_XSS_FILTER = True
-# SECURE_CONTENT_TYPE_NOSNIFF = True
-# X_FRAME_OPTIONS = 'DENY'
-# SECURE_SSL_REDIRECT = True
-# SECURE_BROWSER_XSS_FILTER = True
-# SECURE_BROWSER_XSS_FILTER = True
 # # Disable the Server information in the HTTP response header
 SECURE_SERVER_HEADERS = True
