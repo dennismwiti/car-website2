@@ -31,11 +31,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-print(f"DEBUG: {DEBUG}")
 
 ALLOWED_HOSTS = ['misspowershow.onrender.com', '127.0.0.1']
 
-SITE_ID = 1
+SITE_ID = 2
 
 SERVER_HEADER = None
 
@@ -85,7 +84,7 @@ MIDDLEWARE = [
 
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
-# SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = True
 SECURE_HSTS_SECONDS = 86400  # One year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
