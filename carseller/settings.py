@@ -272,7 +272,7 @@ AUTHENTICATION_BACKENDS = [
 # Session settings
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_AGE = 86400  # 1 day in seconds
-SESSION_COOKIE_NAME = 'car_django'
+SESSION_COOKIE_NAME = 'car_website'
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
