@@ -25,9 +25,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://misspowershow.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['https://misspowershow.onrender.com', '127.0.0.1', '127.0.0.1/admin']
 
 SITE_ID = 1
 
@@ -237,6 +237,6 @@ CSRF_USE_SESSIONS = True
 # # Disable the Server information in the HTTP response header
 SECURE_SERVER_HEADERS = True
 
-# # Development Settings
-# if DEBUG:
-#     SECURE_SSL_REDIRECT = False
+# Development Settings
+if DEBUG:
+    SECURE_SSL_REDIRECT = False
