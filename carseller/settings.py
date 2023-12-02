@@ -24,10 +24,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-DEBUG2 = False
+# DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = False
 
-ALLOWED_HOSTS = ['https://misspowershow.onrender.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['https://misspowershow.onrender.com', '127.0.0.1']
 
 SITE_ID = 1
 
@@ -177,24 +177,6 @@ AWS_S3_REGION_NAME = 'us-west-2'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # DEFAULT_FILE_STORAGE = 'core.storages.MediaStore'
 
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# MEDIA_ROOT = '/Desktop/PythonProjects/car-website2/media'
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'carseller/static'),
-# ]
-
-# STORAGES = {
-#     # ...
-#     "staticfiles": {
-#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-#     },
-# }
-
-# FFMPEG_PATH = "/venv/lib/site-packages"
-
 JAZZMIN_SETTINGS = {
     "site_logo_classes": "img-square",
 
@@ -255,6 +237,6 @@ CSRF_USE_SESSIONS = True
 # # Disable the Server information in the HTTP response header
 SECURE_SERVER_HEADERS = True
 
-# Development Settings
-if DEBUG:
-    SECURE_SSL_REDIRECT = False
+# # Development Settings
+# if DEBUG:
+#     SECURE_SSL_REDIRECT = False
