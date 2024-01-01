@@ -1,0 +1,63 @@
+{% extends 'admin/base_site.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Style the form container */
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-item: center;
+        text-align: left;
+    }
+
+    /* Style form labels */
+    .form-container label {
+        margin-right: 10px;
+        width: 100px;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    /* Style form fields */
+    .form-container input {
+        width: 200px;  /* Adjust the width as needed */
+        margin-bottom: 30px;
+    }
+
+    /* Style the button */
+    .form-container button {
+        align-self: center;
+        background-color: turquoise;
+    }
+</style>
+
+<div style="text-align: center;">
+    <h2>Admin Registration</h2>
+    <form method="post" action="{% url 'admin_registration' %}" class="form-container">
+        {% csrf_token %}
+        <div>
+            <label for="{{ form.fullname.id_for_label }}">Full Name:</label>
+            {{ form.fullname }}
+        </div>
+        <div>
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+        </div>
+        <div>
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+        <div>
+            <label for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+        </div>
+        <div>
+            <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+            {{ form.password2 }}
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+{% endblock %}

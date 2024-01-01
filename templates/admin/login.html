@@ -1,0 +1,9 @@
+{% extends 'admin/login.html' %}
+
+{% block content %}
+    {{ block.super }}
+    <!-- Add the "Forgot Password" link -->
+    <p class="mt-1 pt-1 text-center">Don't have an account? <a href="{% url 'admin_registration' %}">Register here</a>.</p>
+    <p class="mt-2 pt-2 text-center">Forgot Password? <a href="{% url 'password_reset' %}">Reset Password</a></p>
+
+{% endblock %}

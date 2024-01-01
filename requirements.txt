@@ -71,3 +71,5 @@ urllib3>=1.25.4,<2.1
 whitenoise==6.6.0
 zope.event==5.0
 zope.interface==6.1
+
+sendgrid~=6.11.0

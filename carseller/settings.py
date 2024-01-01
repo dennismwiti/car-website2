@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import dj_database_url
+from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -21,25 +25,29 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
-
+# SECRET_KEY = '2ea37aca1fccdc5c6f6c1a83d4fe4bdd83e3aae70afbeabac6fb800908dc23bc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 DEBUG = True
 
-ALLOWED_HOSTS = ['misspowershow.onrender.com', '127.0.0.1', '127.0.0.1/admin']
+ALLOWED_HOSTS = ['misspowershow.onrender.com', '127.0.0.1/admin', '127.0.0.1', 'localhost']
 
-SITE_ID = 1
+SITE_ID = 2
 
 SERVER_HEADER = None
 
 WHITENOISE_SKIP_COMPRESS = True
+
+DOMAIN = 'http://127.0.0.1:8001/'
+LOGIN_REDIRECT_URL = 'admin:index'
 
 # Application definition
 
 INSTALLED_APPS = [
     # 'csp',
     'jazzmin',
+    'admin_registration',
     'message',
     'whitenoise.runserver_nostatic',
     'accounts.apps.AccountsConfig',
@@ -60,6 +68,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -85,8 +94,6 @@ SECURE_HSTS_PRELOAD = True
 
 X_FRAME_OPTIONS = 'DENY'
 
-# CSP_DEFAULT_SRC = ("'self'",)
-
 ROOT_URLCONF = 'carseller.urls'
 
 TEMPLATES = [
@@ -108,15 +115,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'carseller.wsgi.application'
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'carseller_oua4',
-        'USER': 'carseller_oua4_user',
-        'PASSWORD': 'Jrm0hVH7OtG2uiGMDGgm3dANMRUgCTDf',
-        'HOST': 'dpg-cl6tpmquuipc73f3pg10-a.oregon-postgres.render.com',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', 'postgres://carseller_oua4_user:'
+                                          'Jrm0hVH7OtG2uiGMDGgm3dANMRUgCTDf@dpg-'
+                                          'cl6tpmquuipc73f3pg10-a.oregon-postgres.render.com/carseller_oua4')
+    )
 }
 
 # Password validation
@@ -173,22 +178,35 @@ AWS_SECRET_ACCESS_KEY = 'M5b5DNbxIvrM+fswmPKGH3n2Dj5H3UG+eWJR9OPu'
 AWS_STORAGE_BUCKET_NAME = 'django-carwebsite'
 AWS_S3_REGION_NAME = 'us-west-2'
 
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+
+# Additional SendGrid settings
+SENDGRID_SANDBOX_MODE_IN_DEBUG = True
+
+# Additional setting for SMTP debugging
+EMAIL_DEBUG = True
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # DEFAULT_FILE_STORAGE = 'core.storages.MediaStore'
 
 JAZZMIN_SETTINGS = {
-    "site_logo_classes": "img-square",
+    # "site_logo_classes": "img-square",
 
-    "site_logo": "img/logos/cardealerLogo.png",
+    "site_logo": "img/logos/newlogo-removebg-preview.png",
 
     # # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "admin site",
+    "site_title": "miss power",
 
     # # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_header": "",
 
-    "site_brand": "Admin",
+    "site_brand": "M.POWER",
 
     'custom_css': ["jazzmin_custom/custom_admin_base.html"],
 
@@ -196,8 +214,7 @@ JAZZMIN_SETTINGS = {
 
     "search_model": ["auth.User", "auth.Group"],
 
-    "login_logo": "img/logos/cardealerLogo.png",
-
+    "login_logo": "img/logos/newlogo-removebg-preview.png",
 
 
     "topmenu_links": [
@@ -223,7 +240,15 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-# Session settings
+# settings.py
+AUTH_USER_MODEL = 'admin_registration.AdminUser'
+
+
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+
+
+# # Session settings
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_AGE = 86400  # 1 day in seconds
 SESSION_COOKIE_NAME = 'car_website'
@@ -233,8 +258,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 CSRF_USE_SESSIONS = True
-
-# # Disable the Server information in the HTTP response header
+#
+# # # Disable the Server information in the HTTP response header
 SECURE_SERVER_HEADERS = True
 
 # Development Settings
