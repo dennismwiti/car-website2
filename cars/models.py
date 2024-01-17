@@ -8,8 +8,9 @@ from django.core.exceptions import ValidationError
 
 
 def validate_image_file_extension(value):
-    if not value.name.lower().endswith(('.jpg', '.jpeg', '.png')):
-        raise ValidationError('Only JPEG or PNG images are allowed.')
+    valid_extensions = ('.jpg', '.jpeg', '.png', '.webp')
+    if not value.name.lower().endswith(valid_extensions):
+        raise ValidationError('Only JPEG, PNG, or WebP images are allowed.')
 
 
 def validate_video_file_extension(value):
@@ -106,7 +107,7 @@ class Car(models.Model):
     city = models.CharField(choices=city_choices, max_length=100)
     color = models.CharField(choices=color_choices, max_length=100)
     model = models.CharField(choices=models_choices, max_length=100)
-    year = models.IntegerField(('year'), choices=year_choice)
+    year = models.IntegerField(('year'), choices=year_choice, db_index=True)
     condition = models.CharField(max_length=100)
     price = models.IntegerField(
         verbose_name='Price',

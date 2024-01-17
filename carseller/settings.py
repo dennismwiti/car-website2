@@ -16,8 +16,8 @@ from pathlib import Path
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -37,6 +37,11 @@ SITE_ID = 2
 
 SERVER_HEADER = None
 
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+]
+
 WHITENOISE_SKIP_COMPRESS = True
 
 DOMAIN = 'http://127.0.0.1:8001/'
@@ -47,6 +52,7 @@ LOGIN_REDIRECT_URL = 'admin:index'
 INSTALLED_APPS = [
     # 'csp',
     'jazzmin',
+    'debug_toolbar',
     'admin_registration',
     'message',
     'whitenoise.runserver_nostatic',
@@ -72,6 +78,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'carseller.middlewares.HideServerMiddleware',
     # 'csp.middleware.CSPMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -115,6 +122,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'carseller.wsgi.application'
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'cache_directory'),
+    }
+}
 
 DATABASES = {
     'default': dj_database_url.config(
@@ -184,7 +197,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_PASSWORD = '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'
 
 # Additional SendGrid settings
 SENDGRID_SANDBOX_MODE_IN_DEBUG = True
@@ -208,7 +221,7 @@ JAZZMIN_SETTINGS = {
 
     "site_brand": "M.POWER",
 
-    'custom_css': ["jazzmin_custom/custom_admin_base.html"],
+    'custom_css': "jazzmin_custom/custom_admin_base.html",
 
     "welcome_sign": "Welcome Django Admin ",
 

@@ -5,7 +5,7 @@ from django.db import models
 
 class AdminUser(AbstractUser):
     # Additional fields
-    full_name = models.CharField(max_length=50, blank=True, null=True)
+    full_name = models.CharField(max_length=100, blank=False, null=False)
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=150, unique=True)
 

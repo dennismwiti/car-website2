@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.middleware.csrf import get_token
+from django.views.decorators.cache import cache_page
 # from django.views.decorators.http import require_POST
 from .models import Car
 import hashlib
@@ -9,10 +10,16 @@ import hashlib
 
 # Create your views here.
 def cars(request):
-    all_cars = Car.objects.order_by('price')
+    all_cars = Car.objects.order_by('price').values('field1', 'field2', ...)
     paginator = Paginator(all_cars, 9)
-    page = request.GET.get('page')
-    paged_cars = paginator.get_page(page)
+    page = request.GET.get('page', 1)
+
+    try:
+        paged_cars = paginator.page(page)
+    except PageNotAnInteger:
+        paged_cars = paginator.page(1)
+    except EmptyPage:
+        paged_cars = paginator.page(paginator.num_pages)
 
     model_search = Car.objects.values_list('model', flat=True).distinct()
     city_search = Car.objects.values_list('city', flat=True).distinct()
@@ -45,6 +52,7 @@ def car_detail(request, id, no_car=False):
     return render(request, 'cars/car_details.html', data)
 
 
+@cache_page(60 * 15)
 def search(request):
     cars = Car.objects.order_by('price')
 
@@ -54,56 +62,25 @@ def search(request):
     body_style_search = Car.objects.values_list('body_style', flat=True).distinct()
     brand_slug_search = Car.objects.values_list('brand_slug', flat=True).distinct()
 
-    if 'keyword' in request.GET:
-        keyword = request.GET['keyword']
-        if keyword:
-            cars = cars.filter(description__icontains=keyword)
+    # Refactor the search filters
+    filters = {}
+    for param in ['keyword', 'model', 'city', 'year', 'body_style', 'brand_slug', 'min_price', 'max_price']:
+        value = request.GET.get(param)
+        if value:
+            filters[f"{param}__icontains" if param == 'keyword' else f"{param}__iexact"] = value
 
-    if 'model' in request.GET:
-        model = request.GET['model']
-        if model:
-            cars = cars.filter(model__iexact=model)
+    cars = cars.filter(**filters)
 
-    if 'city' in request.GET:
-        city = request.GET['city']
-        if city:
-            cars = cars.filter(city__iexact=city)
+    response = render(request, 'cars/search.html', {
+        'cars': cars,
+        'model_search': model_search,
+        'city_search': city_search,
+        'year_search': year_search,
+        'body_style_search': body_style_search,
+        'brand_slug_search': brand_slug_search,
+    })
 
-    if 'year' in request.GET:
-        year = request.GET['year']
-        if year:
-            cars = cars.filter(year__iexact=year)
-
-    if 'body_style' in request.GET:
-        body_style = request.GET['body_style']
-        if body_style:
-            cars = cars.filter(body_style__iexact=body_style)
-
-    if 'brand_slug' in request.GET:
-        brand_slug = request.GET['brand_slug']
-        if brand_slug:
-            cars = cars.filter(brand_slug__iexact=brand_slug)
-
-    if 'min_price' in request.GET:
-        min_price = request.GET['min_price']
-        if min_price:
-            cars = cars.filter(price__gte=min_price)
-
-    if 'max_price' in request.GET:
-        max_price = request.GET['max_price']
-        if max_price:
-            cars = cars.filter(price__lte=max_price)
-
-        response = render(request, 'cars/search.html', {
-            'cars': cars,
-            'model_search': model_search,
-            'city_search': city_search,
-            'year_search': year_search,
-            'body_style_search': body_style_search,
-            'brand_slug_search': brand_slug_search,
-        })
-
-        return response
+    return response
 
 
 def get_style_hash():

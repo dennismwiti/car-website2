@@ -173,8 +173,14 @@
                                         <div class="price-box">
                                             <span>KSH {{ car.price|intcomma }}</span>
                                         </div>
-                                        <img class="d-block w-100" src="{{ car.car_photo.url }}" alt="car"
-                                             style="height: 180px; weight: 100px;">
+<!--                                        <img class="d-block w-100" src="{{ car.car_photo.url }}" alt="car"-->
+<!--                                             style="height: 180px; weight: 100px;">-->
+                                        <picture>
+                                            <source srcset="{{ car.car_photo.url }}" type="image/webp">
+                                            <source srcset="{{ car.car_photo.url }}" type="image/jpeg">
+                                            <img class="d-block w-100" src="{{ car.car_photo.url }}"
+                                                 alt="car" style="height: 180px; width: 100px;">
+                                        </picture>
                                     </a>
                                     <div class="carbox-overlap-wrapper">
                                         <div class="overlap-box">
@@ -263,8 +269,14 @@
                         <div class="car-thumbnail">
                             <a href="{% url 'car_details' car.id %}" class="car-img">
                                 <!-- <div class="tag">For Sale</div> -->
-                                <img class="d-block w-100" src="{{ car.car_photo.url }}" alt="car"
-                                     style="height: 200px; weight: 200px;">
+<!--                                <img class="d-block w-100" src="{{ car.car_photo.url }}" alt="car"-->
+<!--                                     style="height: 200px; weight: 200px;">-->
+                                <picture>
+                                    <source srcset="{{ car.car_photo.url }}" type="image/webp">
+                                    <source srcset="{{ car.car_photo.url }}" type="image/jpeg">
+                                    <img class="d-block w-100" src="{{ car.car_photo.url }}"
+                                         alt="car" style="height: 180px; width: 100px;">
+                                </picture>
                                 <div class="facilities-list clearfix">
                                     <ul>
                                         <li>
