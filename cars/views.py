@@ -67,7 +67,11 @@ def search(request):
     for param in ['keyword', 'model', 'city', 'year', 'body_style', 'brand_slug', 'min_price', 'max_price']:
         value = request.GET.get(param)
         if value:
-            filters[f"{param}__icontains" if param == 'keyword' else f"{param}__iexact"] = value
+            # Handle min_price and max_price differently
+            if param in ['min_price', 'max_price']:
+                filters['price__' + ('gte' if param == 'min_price' else 'lte')] = value
+            else:
+                filters[f"{param}__icontains" if param == 'keyword' else f"{param}__iexact"] = value
 
     cars = cars.filter(**filters)
 
