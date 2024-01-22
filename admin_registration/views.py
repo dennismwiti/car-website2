@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect
 from .forms import AdminRegistrationForm
 from django.contrib.auth.views import PasswordResetConfirmView
-from django.core.mail import send_mail
+# from django.core.mail import send_mail
 
 
 def admin_registration(request):

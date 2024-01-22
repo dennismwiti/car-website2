@@ -37,6 +37,7 @@ SITE_ID = 2
 
 SERVER_HEADER = None
 
+
 INTERNAL_IPS = [
     # ...
     '127.0.0.1',
@@ -52,7 +53,7 @@ LOGIN_REDIRECT_URL = 'admin:index'
 INSTALLED_APPS = [
     # 'csp',
     'jazzmin',
-    'debug_toolbar',
+    # 'debug_toolbar',
     'admin_registration',
     'message',
     'whitenoise.runserver_nostatic',
@@ -78,7 +79,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'carseller.middlewares.HideServerMiddleware',
     # 'csp.middleware.CSPMiddleware',
     'django.middleware.security.SecurityMiddleware',
