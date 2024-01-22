@@ -73,3 +73,4 @@ zope.event==5.0
 zope.interface==6.1
 
 sendgrid~=6.11.0
+pip==23.3.2
