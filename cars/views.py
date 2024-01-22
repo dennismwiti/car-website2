@@ -10,7 +10,7 @@ import hashlib
 
 # Create your views here.
 def cars(request):
-    all_cars = Car.objects.order_by('price').values('field1', 'field2', ...)
+    all_cars = Car.objects.order_by('price')
     paginator = Paginator(all_cars, 9)
     page = request.GET.get('page', 1)
 
