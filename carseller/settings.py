@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['misspowershow.onrender.com', '127.0.0.1/admin', '127.0.0.1', 'localhost']
 
