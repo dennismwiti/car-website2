@@ -48,6 +48,8 @@ WHITENOISE_SKIP_COMPRESS = True
 DOMAIN = 'http://127.0.0.1:8001/'
 LOGIN_REDIRECT_URL = 'admin:index'
 
+AUTH_USER_MODEL = 'admin_registration.AdminUser'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -252,10 +254,6 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
     # ...
 ]
-
-
-# settings.py
-AUTH_USER_MODEL = 'admin_registration.AdminUser'
 
 
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True

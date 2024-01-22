@@ -1,8 +1,6 @@
-# views.py
 from django.shortcuts import render, redirect
 from .forms import AdminRegistrationForm
 from django.contrib.auth.views import PasswordResetConfirmView
-# from django.core.mail import send_mail
 
 
 def admin_registration(request):
@@ -13,7 +11,7 @@ def admin_registration(request):
             # Debugging statements
             print(f"Form data: {form.cleaned_data}")
 
-            # Save the form data
+            # Save the form data (this also creates an entry in admin_registration_adminuser)
             form.save()
 
             # Redirect to a success page or login page
