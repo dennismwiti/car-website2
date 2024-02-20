@@ -115,7 +115,7 @@ class Car(models.Model):
     )
 
     # # include video_link
-    video_link = models.URLField(max_length=200, blank=True, null=True, help_text="Include your video link!")
+    video_link = models.URLField(max_length=200, blank=True, null=True, help_text="Include your video link here!")
 
     def save(self, *args, **kwargs):
         if self.video_link:
