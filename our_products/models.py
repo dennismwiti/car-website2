@@ -107,7 +107,7 @@ class Accessories(models.Model):
     )
 
     name = models.CharField(max_length=500, verbose_name='Accessory Name')
-    color = models.CharField(choices=color_choices, verbose_name='Color')
+    color = models.CharField(choices=color_choices, verbose_name='Color', max_length=255)
     category = models.CharField(choices=category_choice, max_length=500)
     type_slug = models.SlugField(choices=[(slugify(choice[0]), choice[1]) for choice in Type_slug], max_length=500)
     description = models.TextField(verbose_name='Description', blank=True, null=True)

@@ -114,14 +114,37 @@ CACHES = {
     }
 }
 
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.getenv('DATABASE_URL', 'carwebsite-instances.cre2ic6gofxe.us-west-2.rds.amazonaws.com')
+#     )
+# }
+#         'ENGINE': 'djongo',
+# DATABASES = {
+#     'default': {
+#         'NAME': 'carwebsite',
+#         # 'ENFORCE_SCHEMA': False,
+#         'CLIENT': {
+#             'host': 'localhost',
+#             'port': 27017,  # MongoDB default port
+#             'username': 'blockbuster045',
+#             'password': 'ThgRs5yqkLOJ1vMu',
+#             # 'authSource': 'admin',
+#             # 'authMechanism': 'SCRAM-SHA-1',
+#         }
+#     }
+# }
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'postgres://carseller_oua4_user:'
-                                          'Jrm0hVH7OtG2uiGMDGgm3dANMRUgCTDf@dpg-'
-                                          'cl6tpmquuipc73f3pg10-a.oregon-postgres.render.com/'
-                                          'carseller_oua4')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'carwebsite',
+        'USER': 'postgres',
+        'PASSWORD': 'bumblebee47',
+        'HOST': 'carwebsite-instances.cre2ic6gofxe.us-west-2.rds.amazonaws.com',  # Your AWS RDS endpoint
+        'PORT': '5432',  # Default PostgreSQL port
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
